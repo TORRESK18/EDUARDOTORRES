@@ -1,0 +1,763 @@
+<!-- =====================================================
+     NAV FIJO
+     Está fuera de cualquier sección para que no viaje con el contenido.
+===================================================== -->
+<nav #fixedNav class="top-nav" aria-label="Navegación principal">
+  <div class="nav-glass">
+
+    <button
+      type="button"
+      class="nav-home"
+      [class.active]="activeSection === 'inicio'"
+      (click)="scrollToSection('inicio')">
+      INICIO
+    </button>
+
+    <div class="nav-items-desktop">
+      @for (item of navSections; track item.id) {
+        <button
+          type="button"
+          class="nav-item"
+          [class.active]="activeSection === item.id"
+          (click)="scrollToSection(item.id)">
+          {{ item.label }}
+        </button>
+      }
+    </div>
+
+    <button
+      type="button"
+      class="burger"
+      [class.open]="menuOpen"
+      (click)="toggleMenu()"
+      aria-label="Abrir menú"
+      [attr.aria-expanded]="menuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="menu-panel" [class.open]="menuOpen">
+
+      <button
+        type="button"
+        class="nav-item"
+        [class.active]="activeSection === 'inicio'"
+        (click)="scrollToSection('inicio')">
+        Inicio
+      </button>
+
+      @for (item of navSections; track item.id) {
+        <button
+          type="button"
+          class="nav-item"
+          [class.active]="activeSection === item.id"
+          (click)="scrollToSection(item.id)">
+          {{ item.label }}
+        </button>
+      }
+
+    </div>
+
+  </div>
+</nav>
+
+<div
+  #fixedMenuOverlay
+  class="menu-overlay"
+  [class.open]="menuOpen"
+  (click)="closeMenu()">
+</div>
+
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
+<main class="portfolio-content">
+
+  <!-- ===================================================
+       INICIO
+  ==================================================== -->
+  <section class="hero portfolio-section" id="inicio">
+    <div class="hero-content">
+
+      <div class="hero-text">
+        <h1>EDUARDO TORRES</h1>
+
+        <h2>
+          Desarrollador de Software 
+          <br>
+          Angular · .NET · SQL Server | AWS · Cloud | Industry 4.0 & IT
+        </h2>
+
+        <p>
+          Transformo operaciones complejas en
+          <span class="accent-orange">ecosistemas inteligentes</span>
+          con Ingeniería de Software y Automatización.
+        </p>
+
+        <p>
+          Experto en integrar y diseñar
+          <span class="accent-cyan">soluciones empresariales</span>,
+          <span class="accent-cyan">automatización de procesos</span>
+          e
+          <span class="accent-cyan">integración de plataformas</span>.
+        </p>
+
+        <p class="hero-claim">
+          <strong>
+            Programo soluciones de software enfocadas en arquitectura,
+            datos, integración y automatización.
+          </strong>
+        </p>
+
+        <div class="hero-actions">
+          <a
+            class="hero-btn"
+            href="#"
+            aria-label="LinkedIn de Eduardo">
+            LinkedIn
+          </a>
+
+          <a
+            class="hero-btn"
+            href="#"
+            aria-label="GitHub de Eduardo">
+            GitHub
+          </a>
+
+          <a
+            class="hero-btn ghost"
+            href="mailto:eduardotoorresk18k18@gmail.com">
+            Contacto
+          </a>
+        </div>
+      </div>
+
+
+      <div
+        class="hero-avatar"
+        aria-label="Fotografía de Eduardo Torres">
+        <div class="foto-perfil"></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       PROYECTOS
+  ==================================================== -->
+  <section
+    class="projects-section portfolio-section"
+    id="proyectos">
+
+    <div class="section-container">
+
+      <header class="section-heading">
+        <span class="section-index">
+          01 / PROYECTOS
+        </span>
+
+        <h2>Proyectos</h2>
+
+        <p>
+          Soluciones de software desarrolladas para resolver necesidades
+          empresariales, operativas y de automatización.
+        </p>
+      </header>
+
+
+      <div class="projects-grid">
+
+        <article class="project-card">
+
+          <div class="project-topline">
+            <span>INDUSTRY 4.0</span>
+            <span>01</span>
+          </div>
+
+          <h3>Sistema de Auditorías</h3>
+
+          <p>
+            Plataforma para planeación anual, gestión de hallazgos,
+            responsables, seguimiento, indicadores y generación de reportes.
+          </p>
+
+          <div class="chip-row">
+            <span>Angular</span>
+            <span>.NET</span>
+            <span>SQL Server</span>
+            <span>Power BI</span>
+          </div>
+
+        </article>
+
+
+        <article class="project-card">
+
+          <div class="project-topline">
+            <span>RETAIL SOFTWARE</span>
+            <span>02</span>
+          </div>
+
+          <h3>Punto de Venta</h3>
+
+          <p>
+            Sistema POS con ventas, inventario, productos, proveedores,
+            apartados, devoluciones, reportes e impresión térmica.
+          </p>
+
+          <div class="chip-row">
+            <span>Angular</span>
+            <span>.NET</span>
+            <span>SQL Server</span>
+            <span>ESC/POS</span>
+          </div>
+
+        </article>
+
+
+        <article class="project-card">
+
+          <div class="project-topline">
+            <span>HOSPITALITY</span>
+            <span>03</span>
+          </div>
+
+          <h3>Motel Cristal</h3>
+
+          <p>
+            Plataforma para habitaciones, reservas, inventario,
+            pedidos, usuarios y administración de la operación.
+          </p>
+
+          <div class="chip-row">
+            <span>Angular</span>
+            <span>.NET</span>
+            <span>EF Core</span>
+            <span>SQL Server</span>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===================================================
+       EXPERIENCIA
+  ==================================================== -->
+  <section
+    class="experience-section portfolio-section"
+    id="experiencia">
+
+    <div class="experience-container">
+
+      <header class="section-heading">
+        <span class="section-index">
+          02 / EXPERIENCIA
+        </span>
+
+        <h2>Experiencia profesional</h2>
+
+        <p>
+          Desarrollo de software, automatización y soluciones tecnológicas
+          orientadas a resolver necesidades reales de operación y negocio.
+        </p>
+      </header>
+
+
+      <div class="experience-timeline">
+
+        <article class="experience-item">
+
+          <div class="experience-line">
+            <span class="experience-dot active"></span>
+          </div>
+
+          <div class="experience-content">
+
+            <div class="experience-top">
+
+              <div class="experience-company">
+                <span class="experience-type">
+                  INDUSTRIA AUTOMOTRIZ · INDUSTRY 4.0
+                </span>
+
+                <h3>Magna Cosma San Luis</h3>
+
+                <h4>
+                  Ingeniero Desarrollador de Software
+                </h4>
+              </div>
+
+
+              <div class="experience-date">
+                <span>MAR 2024</span>
+                <span class="date-line"></span>
+                <span>ENE 2026</span>
+              </div>
+
+            </div>
+
+
+            <p class="experience-description">
+              Desarrollo e implementación de aplicaciones web empresariales
+              orientadas a la automatización, digitalización y centralización
+              de procesos dentro de un entorno de manufactura.
+            </p>
+
+
+            <div class="experience-points">
+
+              <div class="experience-point">
+                <span class="point-number">01</span>
+
+                <p>
+                  Diseño y desarrollo de aplicaciones empresariales para
+                  digitalizar procesos y centralizar información operativa.
+                </p>
+              </div>
+
+
+              <div class="experience-point">
+                <span class="point-number">02</span>
+
+                <p>
+                  Desarrollo y optimización de bases de datos, dashboards,
+                  reportes e indicadores para mejorar trazabilidad y análisis.
+                </p>
+              </div>
+
+
+              <div class="experience-point">
+                <span class="point-number">03</span>
+
+                <p>
+                  Implementación de roles, permisos y entornos diferenciados
+                  para distintos niveles operativos y administrativos.
+                </p>
+              </div>
+
+
+              <div class="experience-point">
+                <span class="point-number">04</span>
+
+                <p>
+                  Diseño de soluciones escalables y reutilizables para
+                  extender aplicaciones hacia nuevas áreas y procesos.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="experience-impact">
+
+              <span class="impact-label">
+                IMPACTO
+              </span>
+
+              <p>
+                Soluciones digitales orientadas a fortalecer la trazabilidad,
+                estandarización de procesos y disponibilidad de información.
+              </p>
+
+            </div>
+
+
+            <div class="experience-stack">
+              <span>Angular</span>
+              <span>.NET</span>
+              <span>C#</span>
+              <span>SQL Server</span>
+              <span>REST APIs</span>
+              <span>Power BI</span>
+            </div>
+
+          </div>
+        </article>
+
+
+        <article class="experience-item">
+
+          <div class="experience-line">
+            <span class="experience-dot"></span>
+          </div>
+
+          <div class="experience-content">
+
+            <div class="experience-top">
+
+              <div class="experience-company">
+
+                <span class="experience-type">
+                  SOFTWARE · IT SERVICES
+                </span>
+
+                <h3>TMZ Computer</h3>
+
+                <h4>
+                  Desarrollador de Software y Soluciones IT
+                </h4>
+
+              </div>
+
+
+              <div class="experience-date">
+                <span>NOV 2022</span>
+                <span class="date-line"></span>
+                <span class="current-date">
+                  ACTUALIDAD
+                </span>
+              </div>
+
+            </div>
+
+
+            <p class="experience-description">
+              Desarrollo y mantenimiento de soluciones web, complementado
+              con implementación, administración y soporte de infraestructura
+              tecnológica.
+            </p>
+
+
+            <div class="experience-points">
+
+              <div class="experience-point">
+                <span class="point-number">01</span>
+
+                <p>
+                  Desarrollo, testing, mantenimiento y optimización de
+                  sitios y aplicaciones web.
+                </p>
+              </div>
+
+
+              <div class="experience-point">
+                <span class="point-number">02</span>
+
+                <p>
+                  Integración de APIs REST, diagnóstico de incidencias
+                  y mantenimiento orientado a estabilidad y rendimiento.
+                </p>
+              </div>
+
+
+              <div class="experience-point">
+                <span class="point-number">03</span>
+
+                <p>
+                  Implementación y gestión de infraestructura, sistemas
+                  operativos y servicios en Windows Server y AWS.
+                </p>
+              </div>
+
+
+              <div class="experience-point">
+                <span class="point-number">04</span>
+
+                <p>
+                  Gestión de accesos, respaldos y recuperación de
+                  información para mantener continuidad de servicios.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div class="experience-stack">
+              <span>Angular</span>
+              <span>JavaScript</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>REST APIs</span>
+              <span>AWS</span>
+              <span>Windows Server</span>
+              <span>Linux</span>
+            </div>
+
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- =====================================================
+     ASISTENTE IA
+     IMPORTANTE:
+     Es hermano de <main>, NO está dentro de ninguna sección.
+     Tanto el botón como el chat usan position: fixed.
+===================================================== -->
+
+<button
+  #fixedAssistantDock
+  type="button"
+  class="ai-dock"
+  [class.active]="chatOpen"
+  (click)="toggleChat()"
+  aria-label="Abrir asistente"
+  [attr.aria-expanded]="chatOpen">
+
+  <div class="container-ai-input">
+
+    <div class="ai-card">
+
+      <div class="background-blur-balls">
+        <div class="balls">
+          <span class="ball violet"></span>
+          <span class="ball green"></span>
+          <span class="ball rosa"></span>
+          <span class="ball cyan"></span>
+        </div>
+      </div>
+
+
+      <div class="content-card">
+
+        <div class="background-blur-card">
+
+          <div class="eyes normal-eyes">
+            <span class="eye"></span>
+            <span class="eye"></span>
+          </div>
+
+
+          <div class="eyes happy">
+
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+
+              <path
+                fill="currentColor"
+                d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z">
+              </path>
+
+            </svg>
+
+
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              aria-hidden="true">
+
+              <path
+                fill="currentColor"
+                d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z">
+              </path>
+
+            </svg>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</button>
+
+
+<section
+  #fixedAssistantPanel
+  class="assistant-panel"
+  [class.open]="chatOpen"
+  aria-label="Asistente de Eduardo">
+
+  <header class="assistant-header">
+
+    <div class="assistant-identity">
+
+      <div class="assistant-mini-face">
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="assistant-title">
+        <strong>E·ASSIST</strong>
+        <span>Asistente de Eduardo</span>
+      </div>
+
+    </div>
+
+
+    <button
+      type="button"
+      class="assistant-close"
+      (click)="closeChat()"
+      aria-label="Cerrar asistente">
+
+      <span></span>
+      <span></span>
+
+    </button>
+
+  </header>
+
+
+  <div class="assistant-content">
+
+    <div class="assistant-intro">
+
+      <span class="intro-label">
+        HOLA
+      </span>
+
+      <h3>
+        ¿Qué te gustaría conocer?
+      </h3>
+
+      <p>
+        Puedo contarte sobre mi experiencia,
+        proyectos y tecnologías.
+      </p>
+
+    </div>
+
+
+    <div class="assistant-suggestions">
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('perfil')">
+
+        <div>
+          <strong>Perfil</strong>
+          <span>Conoce un poco sobre mí</span>
+        </div>
+
+        <span class="suggestion-arrow">
+          →
+        </span>
+
+      </button>
+
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('experiencia')">
+
+        <div>
+          <strong>Experiencia</strong>
+          <span>Mi trayectoria profesional</span>
+        </div>
+
+        <span class="suggestion-arrow">
+          →
+        </span>
+
+      </button>
+
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('proyectos')">
+
+        <div>
+          <strong>Proyectos</strong>
+          <span>Sistemas que he desarrollado</span>
+        </div>
+
+        <span class="suggestion-arrow">
+          →
+        </span>
+
+      </button>
+
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('tecnologias')">
+
+        <div>
+          <strong>Tecnologías</strong>
+          <span>Stack y herramientas</span>
+        </div>
+
+        <span class="suggestion-arrow">
+          →
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <div
+      class="assistant-messages"
+      [class.has-messages]="messages.length > 0">
+
+      @for (message of messages; track $index) {
+
+        <div
+          class="assistant-message"
+          [class.user]="message.type === 'user'"
+          [class.bot]="message.type === 'bot'">
+
+          @if (message.type === 'bot') {
+            <span class="message-author">
+              E·ASSIST
+            </span>
+          }
+
+          <p>
+            {{ message.text }}
+          </p>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+
+  <footer class="assistant-footer">
+
+    <form
+      (submit)="sendMessage(); $event.preventDefault()">
+
+      <input
+        type="text"
+        name="message"
+        [(ngModel)]="userMessage"
+        placeholder="Escribe una pregunta..."
+        autocomplete="off">
+
+      <button
+        type="submit"
+        aria-label="Enviar mensaje">
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none">
+
+          <path
+            d="M5 12H19M14 7L19 12L14 17"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+          </path>
+
+        </svg>
+
+      </button>
+
+    </form>
+
+  </footer>
+
+</section>
