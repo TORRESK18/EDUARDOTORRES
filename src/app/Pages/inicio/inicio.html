@@ -5,32 +5,21 @@
 <nav #fixedNav class="top-nav" aria-label="Navegación principal">
   <div class="nav-glass">
 
-    <button
-      type="button"
-      class="nav-home"
-      [class.active]="activeSection === 'inicio'"
+    <button type="button" class="nav-home" [class.active]="activeSection === 'inicio'"
       (click)="scrollToSection('inicio')">
       INICIO
     </button>
 
     <div class="nav-items-desktop">
       @for (item of navSections; track item.id) {
-        <button
-          type="button"
-          class="nav-item"
-          [class.active]="activeSection === item.id"
-          (click)="scrollToSection(item.id)">
-          {{ item.label }}
-        </button>
+      <button type="button" class="nav-item" [class.active]="activeSection === item.id"
+        (click)="scrollToSection(item.id)">
+        {{ item.label }}
+      </button>
       }
     </div>
 
-    <button
-      type="button"
-      class="burger"
-      [class.open]="menuOpen"
-      (click)="toggleMenu()"
-      aria-label="Abrir menú"
+    <button type="button" class="burger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Abrir menú"
       [attr.aria-expanded]="menuOpen">
       <span></span>
       <span></span>
@@ -39,22 +28,16 @@
 
     <div class="menu-panel" [class.open]="menuOpen">
 
-      <button
-        type="button"
-        class="nav-item"
-        [class.active]="activeSection === 'inicio'"
+      <button type="button" class="nav-item" [class.active]="activeSection === 'inicio'"
         (click)="scrollToSection('inicio')">
         Inicio
       </button>
 
       @for (item of navSections; track item.id) {
-        <button
-          type="button"
-          class="nav-item"
-          [class.active]="activeSection === item.id"
-          (click)="scrollToSection(item.id)">
-          {{ item.label }}
-        </button>
+      <button type="button" class="nav-item" [class.active]="activeSection === item.id"
+        (click)="scrollToSection(item.id)">
+        {{ item.label }}
+      </button>
       }
 
     </div>
@@ -62,11 +45,7 @@
   </div>
 </nav>
 
-<div
-  #fixedMenuOverlay
-  class="menu-overlay"
-  [class.open]="menuOpen"
-  (click)="closeMenu()">
+<div #fixedMenuOverlay class="menu-overlay" [class.open]="menuOpen" (click)="closeMenu()">
 </div>
 
 
@@ -85,7 +64,7 @@
         <h1>EDUARDO TORRES</h1>
 
         <h2>
-          Desarrollador de Software 
+          Desarrollador de Software
           <br>
           Angular · .NET · SQL Server | AWS · Cloud | Industry 4.0 & IT
         </h2>
@@ -112,33 +91,27 @@
         </p>
 
         <div class="hero-actions">
-          <a
-            class="hero-btn"
-            href="#"
-            aria-label="LinkedIn de Eduardo">
+          <a class="hero-btn" href="#" aria-label="LinkedIn de Eduardo">
             LinkedIn
           </a>
 
-          <a
-            class="hero-btn"
-            href="#"
-            aria-label="GitHub de Eduardo">
+          <a class="hero-btn" href="#" aria-label="GitHub de Eduardo">
             GitHub
           </a>
 
-          <a
-            class="hero-btn ghost"
-            href="mailto:eduardotoorresk18k18@gmail.com">
+          <a class="hero-btn ghost" href="mailto:eduardotoorresk18k18@gmail.com">
             Contacto
           </a>
         </div>
       </div>
 
 
-      <div
-        class="hero-avatar"
-        aria-label="Fotografía de Eduardo Torres">
-        <div class="foto-perfil"></div>
+      <div class="hero-avatar" aria-label="Fotografía de Eduardo Torres">
+
+        <div class="foto-perfil">
+          <img src="assets/FOTO_CV1.png" alt="Eduardo Torres">
+        </div>
+
       </div>
 
     </div>
@@ -148,9 +121,7 @@
   <!-- ===================================================
        PROYECTOS
   ==================================================== -->
-  <section
-    class="projects-section portfolio-section"
-    id="proyectos">
+  <section class="projects-section portfolio-section" id="proyectos">
 
     <div class="section-container">
 
@@ -249,9 +220,7 @@
   <!-- ===================================================
        EXPERIENCIA
   ==================================================== -->
-  <section
-    class="experience-section portfolio-section"
-    id="experiencia">
+  <section class="experience-section portfolio-section" id="experiencia">
 
     <div class="experience-container">
 
@@ -496,14 +465,8 @@
      Tanto el botón como el chat usan position: fixed.
 ===================================================== -->
 
-<button
-  #fixedAssistantDock
-  type="button"
-  class="ai-dock"
-  [class.active]="chatOpen"
-  (click)="toggleChat()"
-  aria-label="Abrir asistente"
-  [attr.aria-expanded]="chatOpen">
+<button #fixedAssistantDock type="button" class="ai-dock" [class.active]="chatOpen" (click)="toggleChat()"
+  aria-label="Abrir asistente" [attr.aria-expanded]="chatOpen">
 
   <div class="container-ai-input">
 
@@ -531,26 +494,18 @@
 
           <div class="eyes happy">
 
-            <svg
-              fill="none"
-              viewBox="0 0 24 24"
-              aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
 
-              <path
-                fill="currentColor"
+              <path fill="currentColor"
                 d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z">
               </path>
 
             </svg>
 
 
-            <svg
-              fill="none"
-              viewBox="0 0 24 24"
-              aria-hidden="true">
+            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
 
-              <path
-                fill="currentColor"
+              <path fill="currentColor"
                 d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z">
               </path>
 
@@ -569,11 +524,7 @@
 </button>
 
 
-<section
-  #fixedAssistantPanel
-  class="assistant-panel"
-  [class.open]="chatOpen"
-  aria-label="Asistente de Eduardo">
+<section #fixedAssistantPanel class="assistant-panel" [class.open]="chatOpen" aria-label="Asistente de Eduardo">
 
   <header class="assistant-header">
 
@@ -592,11 +543,7 @@
     </div>
 
 
-    <button
-      type="button"
-      class="assistant-close"
-      (click)="closeChat()"
-      aria-label="Cerrar asistente">
+    <button type="button" class="assistant-close" (click)="closeChat()" aria-label="Cerrar asistente">
 
       <span></span>
       <span></span>
@@ -628,9 +575,7 @@
 
     <div class="assistant-suggestions">
 
-      <button
-        type="button"
-        (click)="askQuickQuestion('perfil')">
+      <button type="button" (click)="askQuickQuestion('perfil')">
 
         <div>
           <strong>Perfil</strong>
@@ -644,9 +589,7 @@
       </button>
 
 
-      <button
-        type="button"
-        (click)="askQuickQuestion('experiencia')">
+      <button type="button" (click)="askQuickQuestion('experiencia')">
 
         <div>
           <strong>Experiencia</strong>
@@ -660,9 +603,7 @@
       </button>
 
 
-      <button
-        type="button"
-        (click)="askQuickQuestion('proyectos')">
+      <button type="button" (click)="askQuickQuestion('proyectos')">
 
         <div>
           <strong>Proyectos</strong>
@@ -676,9 +617,7 @@
       </button>
 
 
-      <button
-        type="button"
-        (click)="askQuickQuestion('tecnologias')">
+      <button type="button" (click)="askQuickQuestion('tecnologias')">
 
         <div>
           <strong>Tecnologías</strong>
@@ -694,28 +633,23 @@
     </div>
 
 
-    <div
-      class="assistant-messages"
-      [class.has-messages]="messages.length > 0">
+    <div class="assistant-messages" [class.has-messages]="messages.length > 0">
 
       @for (message of messages; track $index) {
 
-        <div
-          class="assistant-message"
-          [class.user]="message.type === 'user'"
-          [class.bot]="message.type === 'bot'">
+      <div class="assistant-message" [class.user]="message.type === 'user'" [class.bot]="message.type === 'bot'">
 
-          @if (message.type === 'bot') {
-            <span class="message-author">
-              E·ASSIST
-            </span>
-          }
+        @if (message.type === 'bot') {
+        <span class="message-author">
+          E·ASSIST
+        </span>
+        }
 
-          <p>
-            {{ message.text }}
-          </p>
+        <p>
+          {{ message.text }}
+        </p>
 
-        </div>
+      </div>
 
       }
 
@@ -726,29 +660,16 @@
 
   <footer class="assistant-footer">
 
-    <form
-      (submit)="sendMessage(); $event.preventDefault()">
+    <form (submit)="sendMessage(); $event.preventDefault()">
 
-      <input
-        type="text"
-        name="message"
-        [(ngModel)]="userMessage"
-        placeholder="Escribe una pregunta..."
+      <input type="text" name="message" [(ngModel)]="userMessage" placeholder="Escribe una pregunta..."
         autocomplete="off">
 
-      <button
-        type="submit"
-        aria-label="Enviar mensaje">
+      <button type="submit" aria-label="Enviar mensaje">
 
-        <svg
-          viewBox="0 0 24 24"
-          fill="none">
+        <svg viewBox="0 0 24 24" fill="none">
 
-          <path
-            d="M5 12H19M14 7L19 12L14 17"
-            stroke="currentColor"
-            stroke-width="1.7"
-            stroke-linecap="round"
+          <path d="M5 12H19M14 7L19 12L14 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
             stroke-linejoin="round">
           </path>
 
