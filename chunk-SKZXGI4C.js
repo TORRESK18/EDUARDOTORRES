@@ -1,0 +1,1 @@
+import{Ba as i,Ta as n,Ua as o,cb as c}from"./chunk-R6YY5WVF.js";var a=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=i({type:t,selectors:[["app-certificaciones"]],decls:2,vars:0,template:function(e,p){e&1&&(n(0,"p"),c(1,"certificaciones works!"),o())},encapsulation:2})};export{a as CertificacionesComponent};

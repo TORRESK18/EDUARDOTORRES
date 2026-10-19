@@ -1,0 +1,1 @@
+import{Ba as t,Ta as i,Ua as o,cb as p}from"./chunk-R6YY5WVF.js";var a=class n{static \u0275fac=function(e){return new(e||n)};static \u0275cmp=t({type:n,selectors:[["app-experiencia"]],decls:2,vars:0,template:function(e,r){e&1&&(i(0,"p"),p(1,"experiencia works!"),o())},encapsulation:2})};export{a as ExperienciaComponent};
