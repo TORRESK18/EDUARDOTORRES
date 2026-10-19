@@ -1,122 +1,69 @@
-<!-- =====================================================
-     NAV FIJO
-     Está fuera de cualquier sección para que no viaje con el contenido.
-===================================================== -->
-<nav #fixedNav class="top-nav" aria-label="Navegación principal">
-  <div class="nav-glass">
+<div class="inicio-content">
 
-    <button type="button" class="nav-home" [class.active]="activeSection === 'inicio'"
-      (click)="scrollToSection('inicio')">
-      INICIO
-    </button>
+  <!-- =========================================================
+       HERO EDITORIAL | SIN FOTOGRAFÍA NI GAFETE
+       Los elementos globales (Navbar y E·ASSIST) viven en app.html.
+  ========================================================== -->
+  <section class="hero portfolio-section" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-inner">
 
-    <div class="nav-items-desktop">
-      @for (item of navSections; track item.id) {
-      <button type="button" class="nav-item" [class.active]="activeSection === item.id"
-        (click)="scrollToSection(item.id)">
-        {{ item.label }}
-      </button>
-      }
-    </div>
+      <div class="hero-overline" aria-label="Información del portafolio">
+        <span class="hero-role">
+          <span class="hero-status-dot" aria-hidden="true"></span>
+          DESARROLLADOR DE SOFTWARE
+        </span>
+        <span class="hero-signature">EDUARDO TORRES · PORTAFOLIO</span>
+      </div>
 
-    <button type="button" class="burger" [class.open]="menuOpen" (click)="toggleMenu()" aria-label="Abrir menú"
-      [attr.aria-expanded]="menuOpen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+      <h1 id="hero-title" class="hero-headline">
+        <span class="hero-line"><span class="hero-line-inner">Transformo operaciones</span></span>
+        <span class="hero-line"><span class="hero-line-inner">complejas en</span></span>
+        <span class="hero-line"><span class="hero-line-inner hero-metallic">ecosistemas inteligentes</span></span>
+        <span class="hero-line"><span class="hero-line-inner">con Ingeniería de</span></span>
+        <span class="hero-line"><span class="hero-line-inner">Software y Automatización<span class="hero-period">.</span></span></span>
+      </h1>
 
-    <div class="menu-panel" [class.open]="menuOpen">
-
-      <button type="button" class="nav-item" [class.active]="activeSection === 'inicio'"
-        (click)="scrollToSection('inicio')">
-        Inicio
-      </button>
-
-      @for (item of navSections; track item.id) {
-      <button type="button" class="nav-item" [class.active]="activeSection === item.id"
-        (click)="scrollToSection(item.id)">
-        {{ item.label }}
-      </button>
-      }
-
-    </div>
-
-  </div>
-</nav>
-
-<div #fixedMenuOverlay class="menu-overlay" [class.open]="menuOpen" (click)="closeMenu()">
-</div>
-
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
-<main class="portfolio-content">
-
-  <!-- ===================================================
-       INICIO
-  ==================================================== -->
-  <section class="hero portfolio-section" id="inicio">
-    <div class="hero-content">
-
-      <div class="hero-text">
-        <h1>EDUARDO TORRES</h1>
-
-        <h2>
-          Desarrollador de Software
-          <br>
-          Angular · .NET · SQL Server | AWS · Cloud | Industry 4.0 & IT
-        </h2>
-
-        <p>
-          Transformo operaciones complejas en
-          <span class="accent-orange">ecosistemas inteligentes</span>
-          con Ingeniería de Software y Automatización.
-        </p>
-
-        <p>
-          Experto en integrar y diseñar
-          <span class="accent-cyan">soluciones empresariales</span>,
-          <span class="accent-cyan">automatización de procesos</span>
-          e
-          <span class="accent-cyan">integración de plataformas</span>.
-        </p>
-
-        <p class="hero-claim">
-          <strong>
+      <div class="hero-bottom">
+        <div class="hero-description">
+          <p>
+            Experto en integrar y diseñar <strong>soluciones empresariales</strong>,
+            <strong>automatización de procesos</strong> e
+            <strong>integración de plataformas</strong>.
+          </p>
+          <p>
             Programo soluciones de software enfocadas en arquitectura,
             datos, integración y automatización.
-          </strong>
-        </p>
+          </p>
+        </div>
 
-        <div class="hero-actions">
-          <a class="hero-btn" href="#" aria-label="LinkedIn de Eduardo">
-            LinkedIn
-          </a>
-
-          <a class="hero-btn" href="#" aria-label="GitHub de Eduardo">
-            GitHub
-          </a>
-
-          <a class="hero-btn ghost" href="mailto:eduardotoorresk18k18@gmail.com">
-            Contacto
-          </a>
+        <div class="hero-links-and-stack">
+          <p class="hero-stack">
+            Angular · .NET · SQL Server <span aria-hidden="true">/</span>
+            AWS · Cloud <span aria-hidden="true">/</span>
+            Industry 4.0 &amp; IT
+          </p>
+          <div class="hero-actions" aria-label="Enlaces profesionales">
+            <a class="hero-link" href="https://github.com/TORRESK18"
+               target="_blank" rel="noopener noreferrer">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+            <!-- LinkedIn no tiene una URL real en el archivo original.
+                 Sustituye la siguiente etiqueta por un enlace cuando la tengas. -->
+            <span class="hero-link hero-link-pending" title="Perfil de LinkedIn pendiente">LinkedIn</span>
+            <a class="hero-link" href="mailto:eduardotoorresk18k18@gmail.com">
+              Contacto <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </div>
 
-
-      <div class="hero-avatar" aria-label="Fotografía de Eduardo Torres">
-
-        <div class="foto-perfil">
-          <img src="assets/FOTO_CV1.png" alt="Eduardo Torres">
-        </div>
-
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>DESLIZA PARA EXPLORAR</span>
+        <span class="hero-scroll-arrow">↓</span>
       </div>
 
     </div>
   </section>
-
 
   <!-- ===================================================
        PROYECTOS
@@ -137,7 +84,6 @@
           empresariales, operativas y de automatización.
         </p>
       </header>
-
 
       <div class="projects-grid">
 
@@ -164,7 +110,6 @@
 
         </article>
 
-
         <article class="project-card">
 
           <div class="project-topline">
@@ -187,7 +132,6 @@
           </div>
 
         </article>
-
 
         <article class="project-card">
 
@@ -216,7 +160,6 @@
     </div>
   </section>
 
-
   <!-- ===================================================
        EXPERIENCIA
   ==================================================== -->
@@ -236,7 +179,6 @@
           orientadas a resolver necesidades reales de operación y negocio.
         </p>
       </header>
-
 
       <div class="experience-timeline">
 
@@ -262,7 +204,6 @@
                 </h4>
               </div>
 
-
               <div class="experience-date">
                 <span>MAR 2024</span>
                 <span class="date-line"></span>
@@ -271,13 +212,11 @@
 
             </div>
 
-
             <p class="experience-description">
               Desarrollo e implementación de aplicaciones web empresariales
               orientadas a la automatización, digitalización y centralización
               de procesos dentro de un entorno de manufactura.
             </p>
-
 
             <div class="experience-points">
 
@@ -290,7 +229,6 @@
                 </p>
               </div>
 
-
               <div class="experience-point">
                 <span class="point-number">02</span>
 
@@ -300,7 +238,6 @@
                 </p>
               </div>
 
-
               <div class="experience-point">
                 <span class="point-number">03</span>
 
@@ -309,7 +246,6 @@
                   para distintos niveles operativos y administrativos.
                 </p>
               </div>
-
 
               <div class="experience-point">
                 <span class="point-number">04</span>
@@ -321,7 +257,6 @@
               </div>
 
             </div>
-
 
             <div class="experience-impact">
 
@@ -336,7 +271,6 @@
 
             </div>
 
-
             <div class="experience-stack">
               <span>Angular</span>
               <span>.NET</span>
@@ -348,7 +282,6 @@
 
           </div>
         </article>
-
 
         <article class="experience-item">
 
@@ -374,7 +307,6 @@
 
               </div>
 
-
               <div class="experience-date">
                 <span>NOV 2022</span>
                 <span class="date-line"></span>
@@ -385,13 +317,11 @@
 
             </div>
 
-
             <p class="experience-description">
               Desarrollo y mantenimiento de soluciones web, complementado
               con implementación, administración y soporte de infraestructura
               tecnológica.
             </p>
-
 
             <div class="experience-points">
 
@@ -404,7 +334,6 @@
                 </p>
               </div>
 
-
               <div class="experience-point">
                 <span class="point-number">02</span>
 
@@ -414,7 +343,6 @@
                 </p>
               </div>
 
-
               <div class="experience-point">
                 <span class="point-number">03</span>
 
@@ -423,7 +351,6 @@
                   operativos y servicios en Windows Server y AWS.
                 </p>
               </div>
-
 
               <div class="experience-point">
                 <span class="point-number">04</span>
@@ -435,7 +362,6 @@
               </div>
 
             </div>
-
 
             <div class="experience-stack">
               <span>Angular</span>
@@ -455,230 +381,4 @@
     </div>
   </section>
 
-</main>
-
-
-<!-- =====================================================
-     ASISTENTE IA
-     IMPORTANTE:
-     Es hermano de <main>, NO está dentro de ninguna sección.
-     Tanto el botón como el chat usan position: fixed.
-===================================================== -->
-
-<button #fixedAssistantDock type="button" class="ai-dock" [class.active]="chatOpen" (click)="toggleChat()"
-  aria-label="Abrir asistente" [attr.aria-expanded]="chatOpen">
-
-  <div class="container-ai-input">
-
-    <div class="ai-card">
-
-      <div class="background-blur-balls">
-        <div class="balls">
-          <span class="ball violet"></span>
-          <span class="ball green"></span>
-          <span class="ball rosa"></span>
-          <span class="ball cyan"></span>
-        </div>
-      </div>
-
-
-      <div class="content-card">
-
-        <div class="background-blur-card">
-
-          <div class="eyes normal-eyes">
-            <span class="eye"></span>
-            <span class="eye"></span>
-          </div>
-
-
-          <div class="eyes happy">
-
-            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-
-              <path fill="currentColor"
-                d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z">
-              </path>
-
-            </svg>
-
-
-            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
-
-              <path fill="currentColor"
-                d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z">
-              </path>
-
-            </svg>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</button>
-
-
-<section #fixedAssistantPanel class="assistant-panel" [class.open]="chatOpen" aria-label="Asistente de Eduardo">
-
-  <header class="assistant-header">
-
-    <div class="assistant-identity">
-
-      <div class="assistant-mini-face">
-        <span></span>
-        <span></span>
-      </div>
-
-      <div class="assistant-title">
-        <strong>E·ASSIST</strong>
-        <span>Asistente de Eduardo</span>
-      </div>
-
-    </div>
-
-
-    <button type="button" class="assistant-close" (click)="closeChat()" aria-label="Cerrar asistente">
-
-      <span></span>
-      <span></span>
-
-    </button>
-
-  </header>
-
-
-  <div class="assistant-content">
-
-    <div class="assistant-intro">
-
-      <span class="intro-label">
-        HOLA
-      </span>
-
-      <h3>
-        ¿Qué te gustaría conocer?
-      </h3>
-
-      <p>
-        Puedo contarte sobre mi experiencia,
-        proyectos y tecnologías.
-      </p>
-
-    </div>
-
-
-    <div class="assistant-suggestions">
-
-      <button type="button" (click)="askQuickQuestion('perfil')">
-
-        <div>
-          <strong>Perfil</strong>
-          <span>Conoce un poco sobre mí</span>
-        </div>
-
-        <span class="suggestion-arrow">
-          →
-        </span>
-
-      </button>
-
-
-      <button type="button" (click)="askQuickQuestion('experiencia')">
-
-        <div>
-          <strong>Experiencia</strong>
-          <span>Mi trayectoria profesional</span>
-        </div>
-
-        <span class="suggestion-arrow">
-          →
-        </span>
-
-      </button>
-
-
-      <button type="button" (click)="askQuickQuestion('proyectos')">
-
-        <div>
-          <strong>Proyectos</strong>
-          <span>Sistemas que he desarrollado</span>
-        </div>
-
-        <span class="suggestion-arrow">
-          →
-        </span>
-
-      </button>
-
-
-      <button type="button" (click)="askQuickQuestion('tecnologias')">
-
-        <div>
-          <strong>Tecnologías</strong>
-          <span>Stack y herramientas</span>
-        </div>
-
-        <span class="suggestion-arrow">
-          →
-        </span>
-
-      </button>
-
-    </div>
-
-
-    <div class="assistant-messages" [class.has-messages]="messages.length > 0">
-
-      @for (message of messages; track $index) {
-
-      <div class="assistant-message" [class.user]="message.type === 'user'" [class.bot]="message.type === 'bot'">
-
-        @if (message.type === 'bot') {
-        <span class="message-author">
-          E·ASSIST
-        </span>
-        }
-
-        <p>
-          {{ message.text }}
-        </p>
-
-      </div>
-
-      }
-
-    </div>
-
-  </div>
-
-
-  <footer class="assistant-footer">
-
-    <form (submit)="sendMessage(); $event.preventDefault()">
-
-      <input type="text" name="message" [(ngModel)]="userMessage" placeholder="Escribe una pregunta..."
-        autocomplete="off">
-
-      <button type="submit" aria-label="Enviar mensaje">
-
-        <svg viewBox="0 0 24 24" fill="none">
-
-          <path d="M5 12H19M14 7L19 12L14 17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
-            stroke-linejoin="round">
-          </path>
-
-        </svg>
-
-      </button>
-
-    </form>
-
-  </footer>
-
-</section>
+</div>

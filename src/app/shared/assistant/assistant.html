@@ -1,0 +1,209 @@
+
+<button
+  #assistantDock
+  type="button"
+  class="ai-dock"
+  [class.active]="chatOpen()"
+  (click)="toggleChat()"
+  [attr.aria-label]="chatOpen() ? 'Cerrar asistente' : 'Abrir asistente'"
+  [attr.aria-expanded]="chatOpen()"
+  aria-controls="assistantPanel"
+>
+  <div class="container-ai-input">
+    <div class="ai-card">
+
+      <div class="background-blur-balls">
+        <div class="balls">
+          <span class="ball violet"></span>
+          <span class="ball green"></span>
+          <span class="ball rosa"></span>
+          <span class="ball cyan"></span>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="background-blur-card">
+
+          <div class="eyes normal-eyes">
+            <span class="eye"></span>
+            <span class="eye"></span>
+          </div>
+
+          <div class="eyes happy">
+            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z"
+              ></path>
+            </svg>
+
+            <svg fill="none" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                fill="currentColor"
+                d="M8.28386 16.2843C8.9917 15.7665 9.8765 14.731 12 14.731C14.1235 14.731 15.0083 15.7665 15.7161 16.2843C17.8397 17.8376 18.7542 16.4845 18.9014 15.7665C19.4323 13.1777 17.6627 11.1066 17.3088 10.5888C16.3844 9.23666 14.1235 8 12 8C9.87648 8 7.61556 9.23666 6.69122 10.5888C6.33728 11.1066 4.56771 13.1777 5.09858 15.7665C5.24582 16.4845 6.16034 17.8376 8.28386 16.2843Z"
+              ></path>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</button>
+
+<section
+  id="assistantPanel"
+  class="assistant-panel"
+  [class.open]="chatOpen()"
+  [attr.aria-hidden]="!chatOpen()"
+  [attr.inert]="chatOpen() ? null : ''"
+  aria-label="Asistente de Eduardo"
+>
+  <header class="assistant-header">
+    <div class="assistant-identity">
+
+      <div class="assistant-mini-face">
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="assistant-title">
+        <strong>E·ASSIST</strong>
+        <span>Asistente de Eduardo</span>
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      class="assistant-close"
+      (click)="closeChat()"
+      aria-label="Cerrar asistente"
+    >
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="assistant-content">
+
+    <div class="assistant-intro">
+      <span class="intro-label">HOLA</span>
+
+      <h3>¿Qué te gustaría conocer?</h3>
+
+      <p>
+        Puedo contarte sobre la experiencia,
+        proyectos y tecnologías de Eduardo.
+      </p>
+    </div>
+
+    <div class="assistant-suggestions">
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('perfil')"
+      >
+        <div>
+          <strong>Perfil</strong>
+          <span>Conoce el perfil de Eduardo</span>
+        </div>
+        <span class="suggestion-arrow">→</span>
+      </button>
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('experiencia')"
+      >
+        <div>
+          <strong>Experiencia</strong>
+          <span>Trayectoria profesional de Eduardo</span>
+        </div>
+        <span class="suggestion-arrow">→</span>
+      </button>
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('proyectos')"
+      >
+        <div>
+          <strong>Proyectos</strong>
+          <span>Sistemas desarrollados por Eduardo</span>
+        </div>
+        <span class="suggestion-arrow">→</span>
+      </button>
+
+      <button
+        type="button"
+        (click)="askQuickQuestion('tecnologias')"
+      >
+        <div>
+          <strong>Tecnologías</strong>
+          <span>Stack y herramientas</span>
+        </div>
+        <span class="suggestion-arrow">→</span>
+      </button>
+
+    </div>
+
+    <div
+      class="assistant-messages"
+      [class.has-messages]="messages().length > 0"
+      aria-live="polite"
+    >
+      @for (message of messages(); track $index) {
+
+        <div
+          class="assistant-message"
+          [class.user]="message.type === 'user'"
+          [class.bot]="message.type === 'bot'"
+        >
+          @if (message.type === 'bot') {
+            <span class="message-author">
+              E·ASSIST
+            </span>
+          }
+
+          <p>{{ message.text }}</p>
+        </div>
+
+      }
+    </div>
+
+  </div>
+
+  <footer class="assistant-footer">
+    <form (ngSubmit)="sendMessage()">
+
+      <input
+        type="text"
+        name="message"
+        [(ngModel)]="userMessage"
+        placeholder="Escribe una pregunta..."
+        autocomplete="off"
+        aria-label="Pregunta para E·ASSIST"
+      >
+
+      <button
+        type="submit"
+        aria-label="Enviar mensaje"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M5 12H19M14 7L19 12L14 17"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
+        </svg>
+      </button>
+
+    </form>
+  </footer>
+</section>

@@ -1,0 +1,525 @@
+
+/* =========================================================
+   NAVBAR | EDUARDO TORRES
+   Diseño minimalista · Glass · Metallic Dark Blue
+========================================================= */
+
+:host {
+  display: contents;
+}
+
+/* =========================================================
+   NAVBAR PRINCIPAL
+========================================================= */
+
+.portfolio-navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  width: 100%;
+  z-index: 10000;
+
+  font-family: "Century Gothic", CenturyGothic,
+               AppleGothic, sans-serif;
+
+  color: #f1f2f5;
+
+  background: rgba(4, 5, 8, 0.13);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: none;
+  box-shadow: none;
+
+  animation: navbarAppear 0.55s ease-out both;
+}
+
+.navbar-inner {
+  width: min(calc(100% - 48px), 1400px);
+  min-height: 62px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* =========================================================
+   IDENTIDAD
+========================================================= */
+
+.navbar-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-title {
+  color: #f0f1f4;
+
+  font-family: inherit;
+  font-size: clamp(14px, 0.82vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.6px;
+
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.brand-title span {
+  color: #a7abb4;
+}
+
+.brand-subtitle {
+  color: #81858f;
+
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+}
+
+/* =========================================================
+   NAVEGACIÓN DESKTOP
+========================================================= */
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(14px, 1.35vw, 25px);
+}
+
+.desktop-nav a {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 2px;
+
+  color: #b3b6bd;
+  background: transparent;
+  border: none;
+
+  font-family: inherit;
+  font-size: clamp(13px, 0.78vw, 15px);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+/* BRILLO AZUL METÁLICO */
+
+.desktop-nav a:hover {
+  animation: navMetalGlow 2.5s ease-in-out infinite;
+}
+
+/* PÁGINA SELECCIONADA */
+
+.desktop-nav a.active {
+  color: #f2f3f6;
+  font-weight: 600;
+}
+
+/* Mantener el resaltado al pasar el cursor
+   sobre una página seleccionada */
+
+.desktop-nav a.active:hover {
+  animation: navMetalGlow 2.5s ease-in-out infinite;
+}
+
+/* =========================================================
+   HABLEMOS
+========================================================= */
+
+.talk-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  flex-shrink: 0;
+
+  padding: 8px 2px;
+
+  color: #d5d9e1;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+
+  font-family: inherit;
+  font-size: clamp(13px, 0.78vw, 15px);
+  font-weight: 600;
+  white-space: nowrap;
+
+  cursor: default;
+
+  animation: talkSoftGlow 4s ease-in-out infinite;
+}
+
+/* Brillo al pasar el cursor */
+
+.talk-button:hover {
+  animation: talkHoverGlow 2s ease-in-out infinite;
+}
+
+/* Punto luminoso */
+
+.talk-dot {
+  width: 6px;
+  height: 6px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #6285b6;
+
+  box-shadow:
+    0 0 6px rgba(50, 96, 162, 0.35);
+
+  animation: dotPulse 3s ease-in-out infinite;
+}
+
+/* =========================================================
+   BOTÓN MÓVIL
+========================================================= */
+
+.menu-toggle {
+  display: none;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+
+  width: 19px;
+  height: 2px;
+
+  background: #e0e2e6;
+  border-radius: 2px;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.menu-toggle span:nth-child(1).open {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.menu-toggle span:nth-child(2).open {
+  opacity: 0;
+}
+
+.menu-toggle span:nth-child(3).open {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   MENÚ DESPLEGABLE MÓVIL
+========================================================= */
+
+.mobile-nav {
+  display: none;
+}
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes navbarAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Brillo azul oscuro discreto */
+
+@keyframes navMetalGlow {
+  0%, 100% {
+    color: #9fb5d3;
+
+    text-shadow:
+      0 0 5px rgba(30, 68, 125, 0.23);
+  }
+
+  50% {
+    color: #cad9ed;
+
+    text-shadow:
+      0 0 11px rgba(36, 80, 149, 0.48),
+      0 0 18px rgba(15, 45, 103, 0.18);
+  }
+}
+
+/* Hablemos: iluminación suave constante */
+
+@keyframes talkSoftGlow {
+  0%, 100% {
+    color: #c7cbd3;
+    text-shadow: none;
+  }
+
+  50% {
+    color: #e6eaf2;
+
+    text-shadow:
+      0 0 8px rgba(34, 75, 137, 0.25);
+  }
+}
+
+/* Hablemos: iluminación al pasar el cursor */
+
+@keyframes talkHoverGlow {
+  0%, 100% {
+    color: #d1deee;
+
+    text-shadow:
+      0 0 6px rgba(32, 73, 137, 0.30);
+  }
+
+  50% {
+    color: #ffffff;
+
+    text-shadow:
+      0 0 12px rgba(55, 103, 174, 0.55),
+      0 0 20px rgba(18, 53, 108, 0.22);
+  }
+}
+
+/* Indicador luminoso */
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.5;
+
+    box-shadow:
+      0 0 4px rgba(55, 103, 174, 0.25);
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 11px rgba(65, 116, 189, 0.6);
+  }
+}
+
+/* =========================================================
+   MONITORES GRANDES
+========================================================= */
+
+@media (min-width: 2560px) {
+  .navbar-inner {
+    width: min(calc(100% - 80px), 1500px);
+    min-height: 66px;
+  }
+
+  .brand-title {
+    font-size: 17px;
+  }
+
+  .brand-subtitle {
+    font-size: 9px;
+  }
+
+  .desktop-nav a,
+  .talk-button {
+    font-size: 15px;
+  }
+
+  .desktop-nav {
+    gap: 27px;
+  }
+}
+
+/* =========================================================
+   TABLETS Y PANTALLAS MEDIANAS
+========================================================= */
+
+@media (max-width: 1100px) {
+  .navbar-inner {
+    width: calc(100% - 36px);
+    min-height: 58px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+  }
+
+  .desktop-nav,
+  .talk-button {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .mobile-nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    padding: 12px 24px 18px;
+
+    background: rgba(6, 7, 11, 0.78);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: none;
+    box-shadow: none;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .mobile-nav.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateY(0);
+  }
+
+  .mobile-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 6px;
+
+    color: #b6bbc5;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+
+    background: transparent;
+    border: none;
+
+    transition:
+      color 0.3s ease,
+      text-shadow 0.3s ease;
+  }
+
+  .mobile-nav a:hover {
+    color: #bdd0e9;
+
+    text-shadow:
+      0 0 9px rgba(39, 84, 156, 0.38);
+  }
+
+  .mobile-nav a.active {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .mobile-talk {
+    padding: 12px 6px;
+
+    color: #9daec8;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+
+/* =========================================================
+   CELULARES
+========================================================= */
+
+@media (max-width: 480px) {
+  .navbar-inner {
+    width: calc(100% - 28px);
+    min-height: 54px;
+  }
+
+  .brand-title {
+    font-size: 13px;
+  }
+
+  .brand-subtitle {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
+  .mobile-nav {
+    padding: 10px 18px 16px;
+  }
+
+  .mobile-nav a,
+  .mobile-talk {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-navbar,
+  .desktop-nav a:hover,
+  .talk-button,
+  .talk-button:hover,
+  .talk-dot {
+    animation: none;
+  }
+
+  .portfolio-navbar *,
+  .portfolio-navbar *::before,
+  .portfolio-navbar *::after {
+    transition-duration: 0.01ms;
+  }
+}

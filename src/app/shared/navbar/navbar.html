@@ -1,0 +1,88 @@
+
+<header id="mainNavbar" class="portfolio-navbar">
+
+  <div class="navbar-inner">
+
+    <!-- IDENTIDAD -->
+    <a
+      class="navbar-brand"
+      routerLink="/"
+      (click)="closeMenu()"
+      aria-label="Ir al inicio"
+    >
+      <span class="brand-title">
+        EDUARDO <span>TORRES</span>
+      </span>
+
+      <span class="brand-subtitle">
+        SOFTWARE DEVELOPER
+      </span>
+    </a>
+
+    <!-- NAVEGACIÓN DESKTOP -->
+    <nav class="desktop-nav" aria-label="Navegación principal">
+
+      @for (link of links; track link.path) {
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: link.exact }"
+        >
+          {{ link.label }}
+        </a>
+      }
+
+    </nav>
+
+    <!-- HABLEMOS · PRÓXIMAMENTE -->
+    <span class="talk-button" aria-label="Hablemos, próximamente">
+      <span class="talk-dot" aria-hidden="true"></span>
+      Hablemos
+      <span aria-hidden="true">↗</span>
+    </span>
+
+    <!-- BOTÓN MÓVIL -->
+    <button
+      type="button"
+      class="menu-toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-controls="mobileNavigation"
+      [attr.aria-label]="menuOpen() ? 'Cerrar menú' : 'Abrir menú'"
+      (click)="toggleMenu()"
+    >
+      <span [class.open]="menuOpen()"></span>
+      <span [class.open]="menuOpen()"></span>
+      <span [class.open]="menuOpen()"></span>
+    </button>
+
+  </div>
+
+  <!-- DESTELLO CENTRAL -->
+  <div class="navbar-glow" aria-hidden="true"></div>
+
+  <!-- NAVEGACIÓN MÓVIL -->
+  <nav
+    id="mobileNavigation"
+    class="mobile-nav"
+    [class.open]="menuOpen()"
+    [attr.inert]="menuOpen() ? null : ''"
+    aria-label="Navegación móvil"
+  >
+    @for (link of links; track link.path) {
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: link.exact }"
+        (click)="closeMenu()"
+      >
+        {{ link.label }}
+        <span aria-hidden="true">↗</span>
+      </a>
+    }
+
+    <span class="mobile-talk">
+      Hablemos · Próximamente
+    </span>
+  </nav>
+
+</header>
