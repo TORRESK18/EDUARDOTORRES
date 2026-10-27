@@ -1,0 +1,22 @@
+:host { display: block; font-family: 'Century Gothic', CenturyGothic, AppleGothic, Arial, sans-serif; }
+*, *::before, *::after { box-sizing: border-box; }
+.portfolio-footer {
+  position: relative;
+  color: #e8e9ec;
+  background: radial-gradient(ellipse at 85% 10%, rgba(255,255,255,.055), transparent 42%), linear-gradient(125deg, #07080a, #17181d 58%, #0a0b0d);
+  padding: clamp(50px, 6vw, 94px) 0 28px;
+}
+.footer-inner { width: min(calc(100% - 56px), 1460px); margin: 0 auto; }
+.footer-top { display: flex; align-items: end; justify-content: space-between; gap: 36px; padding-bottom: clamp(48px, 5vw, 76px); }
+.footer-identity { max-width: 590px; }
+.footer-overline { display: block; font-size: 10px; font-weight: 700; letter-spacing: .20em; color: #a7aab1; }
+.footer-identity p { margin: 17px 0 0; max-width: 600px; font-size: clamp(25px, 3vw, 45px); font-weight: 600; line-height: 1.17; letter-spacing: -.055em; background: linear-gradient(#fff,#d9dbe0 35%,#777c85 75%,#3d4047); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.footer-navigation { display: flex; gap: 14px 26px; flex-wrap: wrap; justify-content: flex-end; }
+.footer-navigation a, .footer-links a { color: #b5b8bf; text-decoration: none; font-size: 12px; font-weight: 600; transition: color .2s ease; }
+.footer-navigation a:hover, .footer-links a:hover { color: #fff; }
+.footer-navigation a:focus-visible, .footer-links a:focus-visible { outline: 2px solid #b5b8bf; outline-offset: 4px; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); padding-top: 23px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.footer-bottom small { font-size: 11px; line-height: 1.8; color: #999da5; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 12px 25px; }
+@media(max-width:800px) { .footer-inner { width: calc(100% - 34px); } .footer-top { flex-direction: column; align-items: flex-start; } .footer-navigation { justify-content: flex-start; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+@media(prefers-reduced-motion: reduce) { .footer-navigation a, .footer-links a { transition: none; } }

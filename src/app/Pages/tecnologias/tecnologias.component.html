@@ -1,1 +1,113 @@
-<p>tecnologias works!</p>
+<div class="technology-page">
+  <header class="tech-hero" aria-labelledby="technologies-title">
+    <div class="hero-three-column">
+      <div class="side-lane side-lane-left" #leftLane aria-label="Logotipos siguiendo el recorrido del símbolo menor que">
+        <div class="chevron-frame" aria-hidden="true"></div>
+        <div class="chevron-inner" aria-hidden="true">
+          @for (logo of logoRows[0]; track logo.name; let i = $index) {
+            <div #pathLogo class="logo-item path-logo" [class.wordmark-item]="logo.wordmark"
+                 data-chevron-side="left" [attr.data-path-index]="i">
+              @if (!unavailableLogos().has(logo.name)) {
+                <img class="logo-image" [src]="deviconBase + logo.src"
+                     [alt]="logo.name" draggable="false" loading="eager" decoding="async"
+                     (error)="logoUnavailable(logo.name)">
+              } @else {
+                <span class="logo-fallback">{{ logo.name }}</span>
+              }
+              @if (!logo.wordmark && !unavailableLogos().has(logo.name)) {
+                <span class="logo-name">{{ logo.name }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <h1 id="technologies-title" class="hero-title">
+          <span>STACK</span>
+          <span class="metal-text">DE TRABAJO</span>
+        </h1>
+        <p class="hero-summary">Herramientas que utilizo para desarrollar aplicaciones, conectar sistemas y construir soluciones de software.</p>
+        <button type="button" class="explore-link" (click)="explore()">EXPLORAR STACK <span aria-hidden="true">↘</span></button>
+      </div>
+
+      <div class="side-lane side-lane-right" #rightLane aria-label="Logotipos siguiendo el recorrido del símbolo mayor que">
+        <div class="chevron-frame" aria-hidden="true"></div>
+        <div class="chevron-inner" aria-hidden="true">
+          @for (logo of logoRows[1]; track logo.name; let i = $index) {
+            <div #pathLogo class="logo-item path-logo" [class.wordmark-item]="logo.wordmark"
+                 data-chevron-side="right" [attr.data-path-index]="i">
+              @if (!unavailableLogos().has(logo.name)) {
+                <img class="logo-image" [src]="deviconBase + logo.src"
+                     [alt]="logo.name" draggable="false" loading="eager" decoding="async"
+                     (error)="logoUnavailable(logo.name)">
+              } @else {
+                <span class="logo-fallback" [class.aws-fallback]="logo.name === 'AWS'">{{ logo.name }}</span>
+              }
+              @if (!logo.wordmark && !unavailableLogos().has(logo.name)) {
+                <span class="logo-name">{{ logo.name }}</span>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section #catalogue id="explorar-tecnologias" class="catalogue-section" aria-labelledby="catalogue-title" data-surface="light">
+      <div class="page-shell">
+        <div class="section-head" data-reveal>
+          <p class="section-overline">01 / DISCIPLINAS</p>
+          <div class="section-head-grid">
+            <h2 id="catalogue-title">Un stack.<br><span>Múltiples formas de crear.</span></h2>
+            <p>Cada proyecto exige decisiones diferentes. Explora las tecnologías y herramientas con las que he trabajado o me he formado, organizadas por su aplicación.</p>
+          </div>
+        </div>
+
+        <div class="category-selector" aria-label="Filtrar disciplinas tecnológicas">
+          @for (filter of filters; track filter.id) {
+            <button type="button" [class.is-selected]="selected() === filter.id" [attr.aria-pressed]="selected() === filter.id" (click)="selectDomain(filter.id)">{{ filter.label }}</button>
+          }
+        </div>
+
+        <div class="domain-grid" [class.is-filtered]="selected() !== 'all'">
+          @for (domain of visibleDomains(); track domain.id) {
+            <article class="domain-card" [class]="'domain-card tone-' + domain.tone + ' shape-' + domain.shape" data-reveal>
+              <div class="domain-topline"><span>{{ domain.index }} / {{ domain.eyebrow }}</span><span class="domain-symbol" aria-hidden="true">↗</span></div>
+              <div class="domain-main">
+                <h3>{{ domain.title }}</h3>
+                <p>{{ domain.description }}</p>
+              </div>
+              <div class="domain-techs">
+                @for (tech of domain.technologies; track tech) {
+                  <span>{{ tech }}</span>
+                }
+              </div>
+              <p class="domain-note">{{ domain.note }}</p>
+            </article>
+          } @empty {
+            <p class="empty-state">No hay tecnologías registradas en esta categoría.</p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="principle-section" aria-labelledby="principle-title">
+      <div class="page-shell principle-layout">
+        <div class="principle-copy" data-reveal>
+          <p class="section-overline">02 / CÓMO TRABAJO</p>
+          <h2 id="principle-title">La herramienta cambia.<br><span>El propósito permanece.</span></h2>
+          <p>Analizar el problema, diseñar una solución mantenible e integrar las tecnologías necesarias. Ese enfoque conecta mis proyectos industriales con los sistemas desarrollados para negocios.</p>
+          <a href="#experiencia" class="principle-link">VER PROYECTOS Y TRAYECTORIA <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="principle-figure" aria-hidden="true" data-reveal>
+          <span class="figure-a">ANALIZAR</span>
+          <span class="figure-b">DISEÑAR</span>
+          <span class="figure-c">DESARROLLAR</span>
+          <span class="figure-d">INTEGRAR</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

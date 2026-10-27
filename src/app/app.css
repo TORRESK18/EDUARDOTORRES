@@ -1,29 +1,16 @@
-
 :host {
   display: block;
-  min-height: 100vh;
+  min-height: 100%;
+  background: #08090b;
+  color: #f2f3f5;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, Arial, sans-serif;
 }
 
-.portfolio-content {
-  position: relative;
-  min-height: 100vh;
-  padding-top: 62px;
+.site-main, .site-section, app-inicio, app-experiencia, app-tecnologias, app-certificaciones, app-footer {
+  display: block;
+  min-width: 0;
 }
 
-@media (min-width: 2560px) {
-  .portfolio-content {
-    padding-top: 66px;
-  }
-}
-
-@media (max-width: 1100px) {
-  .portfolio-content {
-    padding-top: 58px;
-  }
-}
-
-@media (max-width: 480px) {
-  .portfolio-content {
-    padding-top: 54px;
-  }
-}
+.site-section { scroll-margin-top: 76px; }
+#inicio { scroll-margin-top: 0; }
+:host { scroll-behavior: smooth; }

@@ -1,1 +1,247 @@
-<p>experiencia works!</p>
+<div class="experience-page">
+  <!-- PORTADA OSCURA. EL CARRUSEL NO TIENE CÁPSULA NI BORDES REDONDEADOS. -->
+  <header class="experience-hero" aria-labelledby="experience-title">
+    <div class="experience-shell">
+      <div class="hero-meta">
+        <span><i class="status-dot" aria-hidden="true"></i> TRAYECTORIA PROFESIONAL</span>
+      </div>
+
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <p class="hero-eyebrow">INGENIERÍA DE SOFTWARE · AUTOMATIZACIÓN · DATOS</p>
+          <h1 id="experience-title" class="hero-title">
+            <span class="title-line"><span>Experiencia que</span></span>
+            <span class="title-line"><span><span class="metal-text">transforma</span> retos</span></span>
+            <span class="title-line"><span class="metal-text">en soluciones.</span></span>
+          </h1>
+          <p class="hero-description">Plataformas industriales, dashboards, sistemas empresariales y software a la medida. Proyectos reales para necesidades diferentes.</p>
+          <a class="hero-explore" href="#trayectoria">EXPLORAR EXPERIENCIA <span aria-hidden="true">↘</span></a>
+        </div>
+
+        <section class="hero-reel" aria-label="Carrusel de proyectos destacados" aria-roledescription="carrusel" (focusin)="pauseReel()" (focusout)="resumeReel()">
+          @if (projects.length) {
+            <div class="orbit-scene">
+              <div class="orbit-editor" aria-live="polite" aria-atomic="true">
+                @if (currentProject(); as current) {
+                  <div class="editor-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+                  <span class="editor-label">{{ current.company }} / PROYECTO ACTIVO</span>
+                  <h2>{{ current.title }}</h2>
+                  <p class="editor-category">{{ current.category }}</p>
+                  <p class="editor-description">{{ current.description }}</p>
+                  <div class="editor-stack" aria-label="Tecnologías del proyecto">
+                    @for (tech of current.technologies; track tech) { <span>{{ tech }}</span> }
+                  </div>
+                  <a [href]="'#project-' + current.id">EXPLORAR PROYECTO <span aria-hidden="true">↘</span></a>
+                }
+              </div>
+              <div class="orbit-ring" aria-hidden="true"></div>
+              <div class="orbit-hub" aria-hidden="true"><span>ET</span></div>
+              <div class="orbit-list" aria-hidden="true">
+                @for (project of projects; track project.id; let i = $index) {
+                  <article class="orbit-item" [attr.data-orbit-index]="i">
+                    <span class="orbit-item-company">{{ project.company }}</span>
+                    <strong>{{ project.title }}</strong>
+                    <small>{{ stackPreview(project.technologies) }}</small>
+                  </article>
+                }
+              </div>
+            </div>
+          } @else {
+            <div class="reel-empty" role="status">Proyectos por documentar.</div>
+          }
+        </section>
+      </div>
+      <div class="hero-foot"><span>DESARROLLO · INDUSTRIA · NEGOCIOS</span></div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO CLARO: EL NAVBAR CAMBIA AUTOMÁTICAMENTE DE CONTRASTE AQUÍ. -->
+  <main id="trayectoria" class="career-section" aria-labelledby="career-title">
+    <div class="experience-shell">
+      <div class="section-opening">
+        <p class="section-label" appReveal="up">01 / EXPERIENCIA PROFESIONAL</p>
+        <div class="opening-grid">
+          <h2 id="career-title" appReveal="up">Proyectos reales.<br><span>Ingeniería aplicada.</span></h2>
+          <p appReveal="left" [revealDelay]="80">De plataformas industriales para cinco departamentos hasta soluciones comerciales para negocios: cada proyecto responde a una necesidad distinta.</p>
+        </div>
+      </div>
+
+      @for (job of jobs; track job.id) {
+        <section class="job" [attr.aria-labelledby]="'job-' + job.id">
+          <header class="job-header" appReveal="up">
+            <div class="job-index">{{ job.number }} <span aria-hidden="true">/</span></div>
+            <div class="job-heading">
+              <span class="job-sector">{{ job.sector }}</span>
+              <h3 [id]="'job-' + job.id">{{ job.company }}</h3>
+              <p class="job-role">{{ job.role }}</p>
+            </div>
+            <time class="job-period">{{ job.period }}</time>
+          </header>
+          <p class="job-summary" appReveal="up">{{ job.summary }}</p>
+          <div class="highlights">
+            @for (highlight of job.highlights; track highlight.title; let i = $index) {
+              <article class="highlight" appReveal="up" [revealDelay]="i * 65">
+                <span class="highlight-index">0{{ i + 1 }}</span>
+                <h4>{{ highlight.title }}</h4>
+                <p>{{ highlight.text }}</p>
+              </article>
+            } @empty {
+              <p class="empty-note">Contribuciones pendientes por documentar.</p>
+            }
+          </div>
+
+          @if (job.id === 'magna' && lpp) {
+            <section class="lpp-feature" aria-labelledby="lpp-title" appReveal="scale">
+              <div class="lpp-heading">
+                <div>
+                  <p class="section-label">PLATAFORMA DESTACADA / INDUSTRY 4.0</p>
+                  <h4 id="lpp-title">LPP<span class="metal-period">.</span> <small>Liberación de Primera Pieza</small></h4>
+                </div>
+                <div class="lpp-stat"><strong>05</strong><span>DEPARTAMENTOS</span></div>
+              </div>
+              <p class="lpp-description">{{ lpp.description }}</p>
+              <div class="lpp-capabilities">
+                <span>MEDICIÓN EN TIEMPO REAL</span><span>HALLAZGOS</span><span>CP / CPK</span><span>GRÁFICAS EN VIVO</span><span>ADJUNTOS LPP</span><span>DASHBOARDS</span>
+              </div>
+              <!-- GALERÍA HORIZONTAL TIPO HOVER MAGIC: LAS CAPTURAS NO SE RENOMBRAN. -->
+              <div class="lpp-gallery" aria-label="Galería horizontal de la plataforma LPP">
+                <div class="gallery-topbar">
+                  <span>VISTAS DE LA PLATAFORMA</span>
+                  <span>{{ (currentImageIndex(lpp) + 1).toString().padStart(2, '0') }} / {{ lpp.images.length.toString().padStart(2, '0') }}</span>
+                </div>
+                @if (currentImage(lpp); as mainImage) {
+                  <div class="gallery-main">
+                    @if (!imageFailed(mainImage.src)) {
+                      <img [src]="mainImage.src" [alt]="mainImage.alt" loading="lazy" (error)="markImageFailed(mainImage.src)">
+                    } @else {
+                      <div class="media-empty light-empty"><span aria-hidden="true">◇</span><strong>Imagen no disponible</strong><small>{{ mainImage.label }}</small></div>
+                    }
+                  </div>
+                  <div class="gallery-toolbar">
+                    <span>{{ mainImage.label }}</span>
+                    <div class="gallery-dots" role="group" aria-label="Seleccionar captura LPP">
+                      @for (shot of lpp.images; track shot.src; let i = $index) {
+                        <button type="button" class="gallery-dot" [class.active]="currentImageIndex(lpp) === i"
+                          [attr.aria-label]="'Imagen ' + (i + 1) + ': ' + shot.label"
+                          [attr.aria-pressed]="currentImageIndex(lpp) === i" (click)="chooseImage(lpp, i)"></button>
+                      }
+                    </div>
+                  </div>
+                  <div class="lpp-filmstrip" aria-label="Selecciona una vista de LPP">
+                    @for (shot of lpp.images; track shot.src; let i = $index) {
+                      <button type="button" class="filmstrip-frame" [class.is-selected]="currentImageIndex(lpp) === i"
+                        [attr.aria-label]="'Mostrar ' + shot.label" [attr.aria-pressed]="currentImageIndex(lpp) === i"
+                        (mouseenter)="chooseImage(lpp, i)" (focus)="chooseImage(lpp, i)" (click)="chooseImage(lpp, i)">
+                        @if (!imageFailed(shot.src)) {
+                          <img [src]="shot.src" [alt]="shot.alt" loading="lazy" (error)="markImageFailed(shot.src)">
+                        } @else {
+                          <span class="filmstrip-fallback">{{ (i + 1).toString().padStart(2, '0') }}</span>
+                        }
+                        <span class="frame-index">{{ (i + 1).toString().padStart(2, '0') }}</span>
+                      </button>
+                    }
+                  </div>
+                } @else {
+                  <p class="empty-note">Las capturas de LPP se agregarán próximamente.</p>
+                }
+              </div>
+              <div class="project-technologies lpp-technologies">
+                <span class="tech-heading">TECNOLOGÍAS LPP</span>
+                <div class="tech-list">@for (tech of lpp.technologies; track tech) { <span>{{ tech }}</span> }</div>
+              </div>
+            </section>
+          }
+
+          <div class="projects-heading" appReveal="up"><p class="section-label">PROYECTOS / {{ job.company }}</p><h4>Trabajo desarrollado<span class="metal-period">.</span></h4></div>
+          <div class="projects-grid" [class.magna-grid]="job.id === 'magna'" [id]="'projects-' + job.id">
+            @for (project of projectsFor(job.id); track project.id; let i = $index) {
+              <article class="project-card" [id]="'project-' + project.id" appReveal="up" [revealDelay]="(i % 2) * 75">
+                <div class="project-card-heading"><span>{{ project.category }}</span><span>{{ (i + 1).toString().padStart(2, '0') }}</span></div>
+                <h5>{{ project.title }}</h5>
+                <p class="project-description">{{ project.description }}</p>
+                @if (project.images.length) {
+                  <div class="project-screenshot">
+                    @if (currentImage(project); as shot) {
+                      @if (!imageFailed(shot.src)) {
+                        <img [src]="shot.src" [alt]="shot.alt" loading="lazy" (error)="markImageFailed(shot.src)">
+                      } @else {
+                        <div class="media-empty light-empty"><span aria-hidden="true">◇</span><strong>Imagen no disponible</strong><small>Comprueba el nombre en assets</small></div>
+                      }
+                    }
+                  </div>
+                  @if (project.images.length > 1) {
+                    <div class="project-screenshot-nav">
+                      <span>CAPTURAS {{ (currentImageIndex(project) + 1).toString().padStart(2, '0') }} / {{ project.images.length.toString().padStart(2, '0') }}</span>
+                      <div class="gallery-dots" role="group" [attr.aria-label]="'Seleccionar imagen de ' + project.title">
+                        @for (shot of project.images; track shot.src; let i = $index) {
+                          <button type="button" class="gallery-dot" [class.active]="currentImageIndex(project) === i"
+                            [attr.aria-label]="'Ver imagen ' + (i + 1) + ' de ' + project.title"
+                            [attr.aria-pressed]="currentImageIndex(project) === i" (click)="chooseImage(project, i)"></button>
+                        }
+                      </div>
+                    </div>
+                  }
+                } @else {
+                  <div class="project-no-image"><span aria-hidden="true">◇</span><strong>Captura pendiente</strong><small>El proyecto cuenta con descripción y tecnologías.</small></div>
+                }
+                <div class="project-technologies">
+                  <span class="tech-heading">STACK TECNOLÓGICO</span>
+                  <div class="tech-list">
+                    @for (tech of project.technologies; track tech) { <span>{{ tech }}</span> }
+                    @empty { <span class="empty-note">Tecnologías pendientes.</span> }
+                  </div>
+                </div>
+              </article>
+            } @empty {
+              <div class="empty-note">Los proyectos de esta experiencia se agregarán próximamente.</div>
+            }
+          </div>
+        </section>
+      }
+    
+      <section class="personal-work" aria-labelledby="personal-title" appReveal="up">
+        <div class="personal-label">EN DESARROLLO / INICIATIVAS PROPIAS</div>
+        <div class="personal-layout">
+          <div>
+            <h2 id="personal-title">Software pensado para <span>cada negocio.</span></h2>
+            <p>Actualmente desarrollo soluciones de punto de venta a la medida para <strong>abarrotes y ferreterías</strong>, con opciones de personalización, flujos de operación sencillos y una experiencia de uso accesible para el personal.</p>
+            <span class="personal-status"><span aria-hidden="true"></span> PROYECTOS EN DESARROLLO</span>
+          </div>
+          <div class="personal-lines" aria-label="Áreas de desarrollo">
+            <span>01 / VENTAS E INVENTARIO</span>
+            <span>02 / PERSONALIZACIÓN POR NEGOCIO</span>
+            <span>03 / FACILIDAD DE USO</span>
+            <span>04 / EVOLUCIÓN CONTINUA</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="metrics-section" #metricsSection aria-labelledby="metrics-title">
+        <div class="metrics-intro" appReveal="up">
+          <span class="section-label">EN CIFRAS</span>
+          <h2 id="metrics-title">Números que cuentan <span>mi recorrido.</span></h2>
+        </div>
+        <div class="metrics-grid">
+          @for (metric of metrics; track metric.label) {
+            <div class="metric" appReveal="up">
+              <strong class="metric-number">{{ counterValue(metric) }}<span>{{ metric.suffix }}</span></strong>
+              <p>{{ metric.label }}</p>
+            </div>
+          }
+        </div>
+        <p class="metrics-note">Cifras de presentación editables. Proyectos y formación se muestran como cifras declaradas, no como auditoría externa.</p>
+      </section>
+
+    </div>
+  </main>
+
+  <section class="experience-contact" aria-labelledby="contact-title">
+    <div class="experience-shell contact-layout">
+      <div appReveal="up"><span class="contact-kicker">SIGUIENTE PASO</span><h2 id="contact-title">¿Construimos<br><span>algo útil?</span></h2><p>Disponible para colaborar con equipos de desarrollo y proyectos de software a la medida.</p></div>
+      <div class="contact-actions" appReveal="left" [revealDelay]="100">
+        <a href="#trayectoria">Explorar proyectos <span aria-hidden="true">↗</span></a>
+        <a href="mailto:eduardotoorresk18k18@gmail.com">Contáctame <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</div>

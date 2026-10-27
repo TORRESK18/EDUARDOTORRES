@@ -6,7 +6,7 @@
     <!-- IDENTIDAD -->
     <a
       class="navbar-brand"
-      routerLink="/"
+      href="#inicio"
       (click)="closeMenu()"
       aria-label="Ir al inicio"
     >
@@ -24,9 +24,7 @@
 
       @for (link of links; track link.path) {
         <a
-          [routerLink]="link.path"
-          routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: link.exact }"
+          [href]="link.path"
         >
           {{ link.label }}
         </a>
@@ -57,9 +55,6 @@
 
   </div>
 
-  <!-- DESTELLO CENTRAL -->
-  <div class="navbar-glow" aria-hidden="true"></div>
-
   <!-- NAVEGACIÓN MÓVIL -->
   <nav
     id="mobileNavigation"
@@ -70,9 +65,7 @@
   >
     @for (link of links; track link.path) {
       <a
-        [routerLink]="link.path"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: link.exact }"
+        [href]="link.path"
         (click)="closeMenu()"
       >
         {{ link.label }}

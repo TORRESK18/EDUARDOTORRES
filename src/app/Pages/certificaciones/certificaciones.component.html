@@ -1,1 +1,190 @@
-<p>certificaciones works!</p>
+<main class="cert-page">
+  <section class="cert-hero" data-surface="dark" aria-labelledby="cert-title">
+    <div class="cert-shell hero-layout">
+      <div class="hero-copy cert-reveal" appCertReveal>
+        <span class="eyebrow">FORMACIÓN CONTINUA · 2023—2026</span>
+        <h1 id="cert-title" class="hero-title">
+          <span class="metal-text">CERTIFICACIONES</span>
+          <span class="metal-text">Y FORMACIÓN</span>
+        </h1>
+        <p class="hero-description">Formación técnica en desarrollo de software, cloud, datos, redes e infraestructura, que acompaña mi experiencia y mis proyectos.</p>
+        <button type="button" class="hero-button" (click)="scrollToTraining()">EXPLORAR FORMACIÓN <span aria-hidden="true">↘</span></button>
+      </div>
+
+      <div class="hero-metrics cert-reveal" #metrics appCertReveal aria-label="Formación en cifras">
+        <article class="metric-piece metric-piece-one">
+          <strong>{{ animatedCourses() }}</strong>
+          <span>cursos y certificaciones registrados</span>
+        </article>
+        <article class="metric-piece metric-piece-two">
+          <strong>{{ animatedProviders() }}</strong>
+          <span>instituciones y plataformas</span>
+        </article>
+        <article class="metric-piece metric-piece-three">
+          <strong>{{ metricPeriodStart }}—{{ animatedLastYear() }}</strong>
+          <span>periodo visible de formación</span>
+        </article>
+      </div>
+    </div>
+
+    <div class="brand-showcase cert-reveal" appCertReveal aria-label="Carrusel de instituciones de formación">
+      <div class="brand-marquee">
+        <div class="brand-track" #brandTrack>
+          <div class="brand-sequence" #brandSequence>
+            @for (brand of providerLogos; track brand.name) {
+              <div class="brand-logo" [style.--brand-tone]="brand.tone" [style.--brand-filter]="brand.hoverFilter" [attr.aria-label]="brand.name">
+                @if (showLogo(brand)) {
+                  <img [src]="brand.logo!" [alt]="brand.name" loading="eager" draggable="false" (error)="markLogoUnavailable(brand.name)">
+                } @else {
+                  <span class="brand-wordmark">{{ brand.shortName }}</span>
+                }
+              </div>
+            }
+            @for (brand of providerLogos; track brand.name + '-extra-a') {
+              <div class="brand-logo" [style.--brand-tone]="brand.tone" [style.--brand-filter]="brand.hoverFilter" [attr.aria-label]="brand.name">
+                @if (showLogo(brand)) {
+                  <img [src]="brand.logo!" [alt]="brand.name" loading="eager" draggable="false" (error)="markLogoUnavailable(brand.name)">
+                } @else {
+                  <span class="brand-wordmark">{{ brand.shortName }}</span>
+                }
+              </div>
+            }
+            @for (brand of providerLogos; track brand.name + '-extra-b') {
+              <div class="brand-logo" [style.--brand-tone]="brand.tone" [style.--brand-filter]="brand.hoverFilter" [attr.aria-label]="brand.name">
+                @if (showLogo(brand)) {
+                  <img [src]="brand.logo!" [alt]="brand.name" loading="eager" draggable="false" (error)="markLogoUnavailable(brand.name)">
+                } @else {
+                  <span class="brand-wordmark">{{ brand.shortName }}</span>
+                }
+              </div>
+            }
+          </div>
+          <div class="brand-sequence" aria-hidden="true">
+            @for (brand of providerLogos; track brand.name + '-copy') {
+              <div class="brand-logo" [style.--brand-tone]="brand.tone" [style.--brand-filter]="brand.hoverFilter">
+                @if (showLogo(brand)) {
+                  <img [src]="brand.logo!" alt="" loading="eager" draggable="false" (error)="markLogoUnavailable(brand.name)">
+                } @else {
+                  <span class="brand-wordmark">{{ brand.shortName }}</span>
+                }
+              </div>
+            }
+            @for (brand of providerLogos; track brand.name + '-copy-extra-a') {
+              <div class="brand-logo" [style.--brand-tone]="brand.tone" [style.--brand-filter]="brand.hoverFilter">
+                @if (showLogo(brand)) {
+                  <img [src]="brand.logo!" alt="" loading="eager" draggable="false" (error)="markLogoUnavailable(brand.name)">
+                } @else {
+                  <span class="brand-wordmark">{{ brand.shortName }}</span>
+                }
+              </div>
+            }
+            @for (brand of providerLogos; track brand.name + '-copy-extra-b') {
+              <div class="brand-logo" [style.--brand-tone]="brand.tone" [style.--brand-filter]="brand.hoverFilter">
+                @if (showLogo(brand)) {
+                  <img [src]="brand.logo!" alt="" loading="eager" draggable="false" (error)="markLogoUnavailable(brand.name)">
+                } @else {
+                  <span class="brand-wordmark">{{ brand.shortName }}</span>
+                }
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="formacion-academica" class="academic-section" data-surface="light" aria-labelledby="academic-title">
+    <div class="cert-shell academic-layout">
+      <header class="academic-copy cert-reveal" appCertReveal>
+        <span class="section-kicker">FORMACIÓN ACADÉMICA</span>
+        <h2 id="academic-title">Mi formación <span>académica</span></h2>
+        <p>La base universitaria de mi desarrollo profesional, junto con la experiencia que construyo en proyectos reales.</p>
+      </header>
+      <div class="academic-timeline" aria-label="Trayectoria académica">
+        <article class="academic-timeline-item cert-reveal" appCertReveal>
+          <div class="timeline-point" aria-hidden="true"></div>
+          <span class="timeline-date">2025 — ACTUALIDAD</span>
+          <span class="timeline-status">LICENCIATURA EN CURSO</span>
+          <h3>Licenciatura en Programación y Transformación Digital</h3>
+          <p>Escuela Bancaria y Comercial · Campus San Luis</p>
+          <span class="timeline-index" aria-hidden="true">01</span>
+        </article>
+        <article class="academic-timeline-item cert-reveal" appCertReveal>
+          <div class="timeline-point" aria-hidden="true"></div>
+          <span class="timeline-date">2022 — 2024</span>
+          <span class="timeline-status">TÉCNICO SUPERIOR UNIVERSITARIO</span>
+          <h3>TSU en Tecnologías de la Información</h3>
+          <p>Universidad Tecnológica de San Luis Potosí</p>
+          <span class="timeline-index" aria-hidden="true">02</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-section" data-surface="light" aria-labelledby="featured-title">
+    <div class="cert-shell">
+      <div class="featured-heading cert-reveal" appCertReveal>
+        <div>
+          <span class="section-kicker">SELECCIÓN DE FORMACIÓN</span>
+          <h2 id="featured-title">Aprendizajes <span>destacados</span></h2>
+          <p>Una selección de cursos y programas representativos de mi recorrido técnico</p>
+        </div>
+
+      </div>
+      <div class="featured-window cert-reveal" #featuredRail appCertReveal tabindex="0" (mouseenter)="pauseFeatured()" (mouseleave)="resumeFeatured()" (focusin)="pauseFeatured()" (focusout)="resumeFeatured()" (scroll)="onFeaturedScroll()" aria-label="Desliza para ver más formaciones destacadas">
+        @for (entry of featuredFormations; track entry.id; let i = $index) {
+          <article class="featured-card" [class.featured-card-dark]="i % 3 === 0" [class.featured-card-mid]="i % 3 === 1">
+            <div class="featured-card-top"><span>{{ entry.institution }}</span><span>{{ entry.year }}</span></div>
+            <div class="featured-card-core"><span class="featured-category">{{ entry.track }}</span><h3>{{ entry.title }}</h3></div>
+            <div class="featured-card-foot"><span>FORMACIÓN CONTINUA</span><span aria-hidden="true">↗</span></div>
+          </article>
+        }
+      </div>
+      <div class="featured-pagination" role="group" aria-label="Seleccionar aprendizaje destacado">
+        @for (entry of featuredFormations; track entry.id; let index = $index) {
+          <button type="button" class="featured-dot" [class.is-active]="featuredIndex() === index"
+            [attr.aria-label]="'Mostrar ' + entry.title"
+            [attr.aria-pressed]="featuredIndex() === index"
+            (click)="selectFeatured(index)"><span></span></button>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="archivo" class="archive-section" data-surface="light" aria-labelledby="archive-title">
+    <div class="cert-shell">
+      <header class="archive-header cert-reveal" appCertReveal>
+        <div>
+          <span class="section-kicker">CURSOS Y CERTIFICACIONES</span>
+          <h2 id="archive-title">Aprender y seguir <span class="soft-accent">avanzando</span></h2>
+        </div>
+        <p>Explora la formación por año. Cada registro conserva el nombre de su curso, institución y área de estudio.</p>
+      </header>
+      <div class="filter-bar cert-reveal" appCertReveal>
+        <span class="filter-text">EXPLORAR POR AÑO</span>
+        <div class="year-controls" role="group" aria-label="Filtrar formación por año">
+          <button type="button" [class.is-active]="activeYear() === 'all'" [attr.aria-pressed]="activeYear() === 'all'" (click)="setYear('all')">TODOS</button>
+          @for (year of years; track year) {
+            <button type="button" [class.is-active]="activeYear() === year" [attr.aria-pressed]="activeYear() === year" (click)="setYear(year)">{{ year }}</button>
+          }
+        </div>
+      </div>
+      <div class="year-stack">
+        @for (group of groups(); track group.year) {
+          <section class="year-row cert-reveal" appCertReveal [attr.aria-label]="'Formación del año ' + group.year">
+            <aside class="year-meta"><strong>{{ group.year }}</strong><small>{{ group.entries.length }} {{ group.entries.length === 1 ? 'registro' : 'registros' }}</small></aside>
+            <div class="cards-grid">
+              @for (item of group.entries; track item.id; let i = $index) {
+                <article class="formation-item" [class]="item.providerAccent" tabindex="0">
+                  <div class="item-head"><span class="item-institution">{{ item.institution }}</span><span>{{ group.year }}</span></div>
+                  <h3>{{ item.title }}</h3>
+                  <div class="item-bottom"><span>{{ item.track }}</span></div>
+                </article>
+              }
+            </div>
+          </section>
+        }
+      </div>
+    </div>
+  </section>
+</main>

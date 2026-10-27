@@ -1,384 +1,63 @@
-<div class="inicio-content">
-
-  <!-- =========================================================
-       HERO EDITORIAL | SIN FOTOGRAFÍA NI GAFETE
-       Los elementos globales (Navbar y E·ASSIST) viven en app.html.
-  ========================================================== -->
-  <section class="hero portfolio-section" id="inicio" aria-labelledby="hero-title">
-    <div class="hero-inner">
-
-      <div class="hero-overline" aria-label="Información del portafolio">
-        <span class="hero-role">
-          <span class="hero-status-dot" aria-hidden="true"></span>
-          DESARROLLADOR DE SOFTWARE
-        </span>
-        <span class="hero-signature">EDUARDO TORRES · PORTAFOLIO</span>
-      </div>
-
-      <h1 id="hero-title" class="hero-headline">
-        <span class="hero-line"><span class="hero-line-inner">Transformo operaciones</span></span>
-        <span class="hero-line"><span class="hero-line-inner">complejas en</span></span>
-        <span class="hero-line"><span class="hero-line-inner hero-metallic">ecosistemas inteligentes</span></span>
-        <span class="hero-line"><span class="hero-line-inner">con Ingeniería de</span></span>
-        <span class="hero-line"><span class="hero-line-inner">Software y Automatización<span class="hero-period">.</span></span></span>
-      </h1>
-
-      <div class="hero-bottom">
-        <div class="hero-description">
-          <p>
-            Experto en integrar y diseñar <strong>soluciones empresariales</strong>,
-            <strong>automatización de procesos</strong> e
-            <strong>integración de plataformas</strong>.
-          </p>
-          <p>
-            Programo soluciones de software enfocadas en arquitectura,
-            datos, integración y automatización.
-          </p>
+<main class="inicio-content" data-surface="dark">
+  <section class="hero" aria-labelledby="hero-title" id="hero-inicio">
+    <div class="hero-layout">
+      <div class="orbit-panel orbit-panel-left" aria-label="Tecnologías con las que trabajo">
+        <div class="orbit-shape orbit-shape-left" aria-hidden="true"></div>
+        <div class="orbit-lane" #technologiesLane>
+          @for (brand of technologies; track brand.name) {
+            <div class="orbit-brand" [class.orbit-brand-wordmark]="brand.isWordmark" [style.--logo-color]="brand.color || '#eef0f3'" [style.--logo-filter]="brand.colorFilter || 'none'" [attr.aria-label]="brand.name">
+              <div class="orbit-glass">
+              @if (brand.logo) {
+                <img [src]="brand.logo" [alt]="brand.name" loading="eager" draggable="false" (error)="onLogoError($event)">
+                <span class="orbit-fallback" hidden>{{ brand.text || brand.name }}</span>
+              } @else {
+                <span class="orbit-fallback">{{ brand.text || brand.name }}</span>
+              }
+              </div>
+            </div>
+          }
         </div>
+        <span class="orbit-caption">TECNOLOGÍAS</span>
+      </div>
 
-        <div class="hero-links-and-stack">
-          <p class="hero-stack">
-            Angular · .NET · SQL Server <span aria-hidden="true">/</span>
-            AWS · Cloud <span aria-hidden="true">/</span>
-            Industry 4.0 &amp; IT
-          </p>
-          <div class="hero-actions" aria-label="Enlaces profesionales">
-            <a class="hero-link" href="https://github.com/TORRESK18"
-               target="_blank" rel="noopener noreferrer">
-              GitHub <span aria-hidden="true">↗</span>
-            </a>
-            <!-- LinkedIn no tiene una URL real en el archivo original.
-                 Sustituye la siguiente etiqueta por un enlace cuando la tengas. -->
-            <span class="hero-link hero-link-pending" title="Perfil de LinkedIn pendiente">LinkedIn</span>
-            <a class="hero-link" href="mailto:eduardotoorresk18k18@gmail.com">
-              Contacto <span aria-hidden="true">↗</span>
-            </a>
-          </div>
+      <div class="hero-center">
+        
+        <span class="hero-overline">DESARROLLADOR DE SOFTWARE</span>
+        <h1 id="hero-title" class="hero-headline">
+          Construyo <span class="hero-metallic">soluciones digitales</span>
+          con <span class="hero-metallic">innovación</span> y <span class="hero-metallic">eficiencia</span>
+          para generar <span class="hero-metallic">resultados reales</span>
+        </h1>
+        <p class="hero-description">
+          Desarrollo aplicaciones, integro sistemas y automatizo procesos para convertir
+          necesidades reales en soluciones de software funcionales.
+        </p>
+        <nav class="hero-actions" aria-label="Enlaces de navegación y contacto">
+          <a href="#experiencia" class="hero-primary">Explorar trayectoria <span aria-hidden="true">↗</span></a>
+          <a href="#tecnologias" class="hero-text-link">Tecnologías <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/TORRESK18" target="_blank" rel="noopener noreferrer" class="hero-text-link">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="mailto:eduardotoorresk18k18@gmail.com" class="hero-text-link">Contacto <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+
+      <div class="orbit-panel orbit-panel-right" aria-label="Instituciones en las que me he formado">
+        <div class="orbit-shape orbit-shape-right" aria-hidden="true"></div>
+        <div class="orbit-lane" #institutionsLane>
+          @for (brand of institutionsLoop; track $index) {
+            <div class="orbit-brand" [class.orbit-brand-wordmark]="brand.isWordmark" [style.--logo-color]="brand.color || '#eef0f3'" [style.--logo-filter]="brand.colorFilter || 'none'" [attr.aria-label]="brand.name">
+              <div class="orbit-glass">
+              @if (brand.logo) {
+                <img [src]="brand.logo" [alt]="brand.name" loading="eager" draggable="false" (error)="onLogoError($event)">
+                <span class="orbit-fallback" hidden>{{ brand.text || brand.name }}</span>
+              } @else {
+                <span class="orbit-fallback">{{ brand.text || brand.name }}</span>
+              }
+              </div>
+            </div>
+          }
         </div>
-      </div>
-
-      <div class="hero-scroll-hint" aria-hidden="true">
-        <span>DESLIZA PARA EXPLORAR</span>
-        <span class="hero-scroll-arrow">↓</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===================================================
-       PROYECTOS
-  ==================================================== -->
-  <section class="projects-section portfolio-section" id="proyectos">
-
-    <div class="section-container">
-
-      <header class="section-heading">
-        <span class="section-index">
-          01 / PROYECTOS
-        </span>
-
-        <h2>Proyectos</h2>
-
-        <p>
-          Soluciones de software desarrolladas para resolver necesidades
-          empresariales, operativas y de automatización.
-        </p>
-      </header>
-
-      <div class="projects-grid">
-
-        <article class="project-card">
-
-          <div class="project-topline">
-            <span>INDUSTRY 4.0</span>
-            <span>01</span>
-          </div>
-
-          <h3>Sistema de Auditorías</h3>
-
-          <p>
-            Plataforma para planeación anual, gestión de hallazgos,
-            responsables, seguimiento, indicadores y generación de reportes.
-          </p>
-
-          <div class="chip-row">
-            <span>Angular</span>
-            <span>.NET</span>
-            <span>SQL Server</span>
-            <span>Power BI</span>
-          </div>
-
-        </article>
-
-        <article class="project-card">
-
-          <div class="project-topline">
-            <span>RETAIL SOFTWARE</span>
-            <span>02</span>
-          </div>
-
-          <h3>Punto de Venta</h3>
-
-          <p>
-            Sistema POS con ventas, inventario, productos, proveedores,
-            apartados, devoluciones, reportes e impresión térmica.
-          </p>
-
-          <div class="chip-row">
-            <span>Angular</span>
-            <span>.NET</span>
-            <span>SQL Server</span>
-            <span>ESC/POS</span>
-          </div>
-
-        </article>
-
-        <article class="project-card">
-
-          <div class="project-topline">
-            <span>HOSPITALITY</span>
-            <span>03</span>
-          </div>
-
-          <h3>Motel Cristal</h3>
-
-          <p>
-            Plataforma para habitaciones, reservas, inventario,
-            pedidos, usuarios y administración de la operación.
-          </p>
-
-          <div class="chip-row">
-            <span>Angular</span>
-            <span>.NET</span>
-            <span>EF Core</span>
-            <span>SQL Server</span>
-          </div>
-
-        </article>
-
+        <span class="orbit-caption">FORMACIÓN</span>
       </div>
     </div>
   </section>
-
-  <!-- ===================================================
-       EXPERIENCIA
-  ==================================================== -->
-  <section class="experience-section portfolio-section" id="experiencia">
-
-    <div class="experience-container">
-
-      <header class="section-heading">
-        <span class="section-index">
-          02 / EXPERIENCIA
-        </span>
-
-        <h2>Experiencia profesional</h2>
-
-        <p>
-          Desarrollo de software, automatización y soluciones tecnológicas
-          orientadas a resolver necesidades reales de operación y negocio.
-        </p>
-      </header>
-
-      <div class="experience-timeline">
-
-        <article class="experience-item">
-
-          <div class="experience-line">
-            <span class="experience-dot active"></span>
-          </div>
-
-          <div class="experience-content">
-
-            <div class="experience-top">
-
-              <div class="experience-company">
-                <span class="experience-type">
-                  INDUSTRIA AUTOMOTRIZ · INDUSTRY 4.0
-                </span>
-
-                <h3>Magna Cosma San Luis</h3>
-
-                <h4>
-                  Ingeniero Desarrollador de Software
-                </h4>
-              </div>
-
-              <div class="experience-date">
-                <span>MAR 2024</span>
-                <span class="date-line"></span>
-                <span>ENE 2026</span>
-              </div>
-
-            </div>
-
-            <p class="experience-description">
-              Desarrollo e implementación de aplicaciones web empresariales
-              orientadas a la automatización, digitalización y centralización
-              de procesos dentro de un entorno de manufactura.
-            </p>
-
-            <div class="experience-points">
-
-              <div class="experience-point">
-                <span class="point-number">01</span>
-
-                <p>
-                  Diseño y desarrollo de aplicaciones empresariales para
-                  digitalizar procesos y centralizar información operativa.
-                </p>
-              </div>
-
-              <div class="experience-point">
-                <span class="point-number">02</span>
-
-                <p>
-                  Desarrollo y optimización de bases de datos, dashboards,
-                  reportes e indicadores para mejorar trazabilidad y análisis.
-                </p>
-              </div>
-
-              <div class="experience-point">
-                <span class="point-number">03</span>
-
-                <p>
-                  Implementación de roles, permisos y entornos diferenciados
-                  para distintos niveles operativos y administrativos.
-                </p>
-              </div>
-
-              <div class="experience-point">
-                <span class="point-number">04</span>
-
-                <p>
-                  Diseño de soluciones escalables y reutilizables para
-                  extender aplicaciones hacia nuevas áreas y procesos.
-                </p>
-              </div>
-
-            </div>
-
-            <div class="experience-impact">
-
-              <span class="impact-label">
-                IMPACTO
-              </span>
-
-              <p>
-                Soluciones digitales orientadas a fortalecer la trazabilidad,
-                estandarización de procesos y disponibilidad de información.
-              </p>
-
-            </div>
-
-            <div class="experience-stack">
-              <span>Angular</span>
-              <span>.NET</span>
-              <span>C#</span>
-              <span>SQL Server</span>
-              <span>REST APIs</span>
-              <span>Power BI</span>
-            </div>
-
-          </div>
-        </article>
-
-        <article class="experience-item">
-
-          <div class="experience-line">
-            <span class="experience-dot"></span>
-          </div>
-
-          <div class="experience-content">
-
-            <div class="experience-top">
-
-              <div class="experience-company">
-
-                <span class="experience-type">
-                  SOFTWARE · IT SERVICES
-                </span>
-
-                <h3>TMZ Computer</h3>
-
-                <h4>
-                  Desarrollador de Software y Soluciones IT
-                </h4>
-
-              </div>
-
-              <div class="experience-date">
-                <span>NOV 2022</span>
-                <span class="date-line"></span>
-                <span class="current-date">
-                  ACTUALIDAD
-                </span>
-              </div>
-
-            </div>
-
-            <p class="experience-description">
-              Desarrollo y mantenimiento de soluciones web, complementado
-              con implementación, administración y soporte de infraestructura
-              tecnológica.
-            </p>
-
-            <div class="experience-points">
-
-              <div class="experience-point">
-                <span class="point-number">01</span>
-
-                <p>
-                  Desarrollo, testing, mantenimiento y optimización de
-                  sitios y aplicaciones web.
-                </p>
-              </div>
-
-              <div class="experience-point">
-                <span class="point-number">02</span>
-
-                <p>
-                  Integración de APIs REST, diagnóstico de incidencias
-                  y mantenimiento orientado a estabilidad y rendimiento.
-                </p>
-              </div>
-
-              <div class="experience-point">
-                <span class="point-number">03</span>
-
-                <p>
-                  Implementación y gestión de infraestructura, sistemas
-                  operativos y servicios en Windows Server y AWS.
-                </p>
-              </div>
-
-              <div class="experience-point">
-                <span class="point-number">04</span>
-
-                <p>
-                  Gestión de accesos, respaldos y recuperación de
-                  información para mantener continuidad de servicios.
-                </p>
-              </div>
-
-            </div>
-
-            <div class="experience-stack">
-              <span>Angular</span>
-              <span>JavaScript</span>
-              <span>HTML</span>
-              <span>CSS</span>
-              <span>REST APIs</span>
-              <span>AWS</span>
-              <span>Windows Server</span>
-              <span>Linux</span>
-            </div>
-
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-</div>
+</main>

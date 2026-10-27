@@ -1,4 +1,8 @@
-import { Component, ElementRef, HostListener, NgZone, OnDestroy, ViewChild, inject, signal } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, NgZone, OnDestroy, ViewChild, inject, signal } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { PLATFORM_ID } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, Subscription } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { AssistantService, ChatMessage, QuickTopic } from '../../core/services/assistant';
 
@@ -9,9 +13,15 @@ import { AssistantService, ChatMessage, QuickTopic } from '../../core/services/a
   templateUrl: './assistant.html',
   styleUrl: './assistant.css'
 })
-export class Assistant implements OnDestroy {
+export class Assistant implements AfterViewInit, OnDestroy {
   private readonly service = inject(AssistantService);
   private readonly zone = inject(NgZone);
+  private readonly document = inject(DOCUMENT);
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly host = inject(ElementRef<HTMLElement>);
+  private readonly router = inject(Router);
+  private routeSubscription?: Subscription;
+  private themeFrame: number | null = null;
 
   @ViewChild('assistantDock', { static: true })
   private dock!: ElementRef<HTMLButtonElement>;
@@ -24,6 +34,30 @@ export class Assistant implements OnDestroy {
   private replyTimers: number[] = [];
   private mouseX = 0.5;
   private mouseY = 0.5;
+
+  ngAfterViewInit(): void {
+    if (!this.browser) return;
+    window.addEventListener('scroll', this.scheduleThemeUpdate, { passive: true });
+    window.addEventListener('resize', this.scheduleThemeUpdate);
+    this.routeSubscription = this.router.events.pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.scheduleThemeUpdate());
+    this.scheduleThemeUpdate();
+  }
+
+  private readonly scheduleThemeUpdate = (): void => {
+    if (!this.browser || this.themeFrame !== null) return;
+    this.themeFrame = requestAnimationFrame(() => {
+      this.themeFrame = null;
+      const dock = this.dock.nativeElement.getBoundingClientRect();
+      const testY = dock.top + dock.height / 2;
+      const sections = this.document.querySelectorAll<HTMLElement>('.career-section, [data-surface="light"]');
+      const light = Array.from(sections).some(section => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= testY && rect.bottom > testY;
+      });
+      this.host.nativeElement.classList.toggle('is-surface-light', light);
+    });
+  };
 
   toggleChat(): void {
     this.chatOpen.update(open => !open);
@@ -74,6 +108,12 @@ export class Assistant implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.routeSubscription?.unsubscribe();
+    if (this.browser) {
+      window.removeEventListener('scroll', this.scheduleThemeUpdate);
+      window.removeEventListener('resize', this.scheduleThemeUpdate);
+      if (this.themeFrame !== null) cancelAnimationFrame(this.themeFrame);
+    }
     if (this.mouseFrame !== null) cancelAnimationFrame(this.mouseFrame);
     this.replyTimers.forEach(id => clearTimeout(id));
     this.replyTimers = [];
