@@ -1,1 +1,0 @@
-import{Ba as t,Ta as n,Ua as a,cb as i}from"./chunk-R6YY5WVF.js";var s=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=t({type:o,selectors:[["app-tecnologias"]],decls:2,vars:0,template:function(e,p){e&1&&(n(0,"p"),i(1,"tecnologias works!"),a())},encapsulation:2})};export{s as TecnologiasComponent};
