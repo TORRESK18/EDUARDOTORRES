@@ -81,7 +81,7 @@ const POS_IMAGES: readonly ProjectImage[] = [
 @Component({
   selector: 'app-experiencia',
   standalone: true,
-  imports: [RouterLink, RevealOnScrollDirective],
+  imports: [ RevealOnScrollDirective],
   templateUrl: './experiencia.component.html',
   styleUrl: './experiencia.component.css'
 })

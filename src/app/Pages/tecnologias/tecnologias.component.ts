@@ -23,7 +23,7 @@ interface TechDomain {
 @Component({
   selector: 'app-tecnologias',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './tecnologias.component.html',
   styleUrl: './tecnologias.component.css'
 })

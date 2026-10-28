@@ -21,7 +21,7 @@ interface Brand {
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './inicio.html',
   styleUrl: './inicio.css'
 })
